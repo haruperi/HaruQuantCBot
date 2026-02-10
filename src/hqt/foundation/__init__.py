@@ -81,6 +81,24 @@ from .exceptions import (
 # Logging System
 from .logging import setup_logging
 
+# Database Layer
+from .database import (
+    Base,
+    DatabaseManager,
+    User,
+    Strategy,
+    Backtest,
+    BacktestRepository,
+    BacktestTrade,
+    NotificationRepository,
+    OptimizationRepository,
+    OptimizationResult,
+    OptimizationResultRepository,
+    StrategyRepository,
+    TradeRepository,
+    UserRepository,
+)
+
 # Utility Functions - Datetime
 from .utils import (
     Timeframe,
@@ -181,6 +199,21 @@ __all__ = [
     "SecretError",
     # Logging
     "setup_logging",
+    # Database
+    "DatabaseManager",
+    "Base",
+    "User",
+    "Strategy",
+    "Backtest",
+    "BacktestTrade",
+    "BacktestRepository",
+    "StrategyRepository",
+    "UserRepository",
+    "TradeRepository",
+    "OptimizationRepository",
+    "OptimizationResult",
+    "OptimizationResultRepository",
+    "NotificationRepository",
     # Utility Functions - Datetime
     "Timeframe",
     "utc_now",
