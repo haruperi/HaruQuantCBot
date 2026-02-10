@@ -103,25 +103,25 @@
 
 ### Task 1.4: Logging System [SDD: §4.1] [REQ: FND-FR-001 through FND-FR-009]
 
-- [ ] **Sub-Task 1.4.1**: Create `src/hqt/foundation/logging/config.py` — `setup_logging(config)` using `logging.config.dictConfig()`. Support level, console, file, JSON toggles.
-  - **Commit**: `feat(logging): implement logging configuration from TOML`
+- [x] **Sub-Task 1.4.1**: Create `src/hqt/foundation/logging/config.py` — `setup_logging(config)` using `logging.config.dictConfig()`. Support level, console, file, JSON toggles.
+  - **Commit**: `0510d1e - feat(logging): implement logging configuration from TOML`
 
-- [ ] **Sub-Task 1.4.2**: Create `handlers.py` — RotatingFileHandler wrapper, JsonFileHandler, SpdlogBridgeHandler (placeholder for Phase 3).
-  - **Commit**: `feat(logging): implement rotating file, JSON, and spdlog bridge handlers`
+- [x] **Sub-Task 1.4.2**: Create `handlers.py` — RotatingFileHandler wrapper, JsonFileHandler, SpdlogBridgeHandler (placeholder for Phase 3).
+  - **Commit**: `2e544d5 - feat(logging): implement rotating file, JSON, and spdlog bridge handlers`
 
-- [ ] **Sub-Task 1.4.3**: Create `formatters.py` — ConsoleFormatter (colored), FileFormatter, JsonFormatter (structured).
-  - **Commit**: `feat(logging): implement console, file, and JSON formatters`
+- [x] **Sub-Task 1.4.3**: Create `formatters.py` — ConsoleFormatter (colored), FileFormatter, JsonFormatter (structured).
+  - **Commit**: `6711bb3 - feat(logging): implement console, file, and JSON formatters`
 
-- [ ] **Sub-Task 1.4.4**: Create `filters.py` — ModuleFilter, LevelRangeFilter, KeywordFilter.
-  - **Commit**: `feat(logging): implement module, level, and keyword filters`
+- [x] **Sub-Task 1.4.4**: Create `filters.py` — ModuleFilter, LevelRangeFilter, KeywordFilter.
+  - **Commit**: `04e02ab - feat(logging): implement module, level, and keyword filters`
 
-- [ ] **Sub-Task 1.4.5**: Create `redactor.py` — `RedactionFilter` that masks API keys, tokens, passwords with `[REDACTED]`. Integrate into all handlers.
-  - **Commit**: `feat(logging): implement sensitive value redaction filter`
+- [x] **Sub-Task 1.4.5**: Create `redactor.py` — `RedactionFilter` that masks API keys, tokens, passwords with `[REDACTED]`. Integrate into all handlers.
+  - **Commit**: `0f34d84 - feat(logging): implement sensitive value redaction filter`
 
-- **Testing**: Test logger init, handler output, formatter format, filter logic, redactor masks secrets.
-  - **Commit**: `test(logging): add comprehensive logging system tests`
-- **Documentation**: Document log format, config options, redaction patterns.
-  - **Commit**: `docs: add logging system documentation`
+- [x] **Testing**: Test logger init, handler output, formatter format, filter logic, redactor masks secrets.
+  - **Commit**: `097b96c - test(logging): add comprehensive logging system tests`
+- [x] **Documentation**: Document log format, config options, redaction patterns.
+  - **Commit**: `42d9e0c - docs: add logging system documentation`
 
 ---
 
