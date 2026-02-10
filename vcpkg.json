@@ -3,7 +3,7 @@
   "name": "hqt",
   "version": "0.1.0",
   "description": "Hybrid C++/Python Quantitative Trading & Backtesting System",
-  "homepage": "https://github.com/yourusername/hqt",
+  "homepage": "https://github.com/haruperi/HaruQuantCBot",
   "license": "MIT",
   "dependencies": [
     "spdlog",

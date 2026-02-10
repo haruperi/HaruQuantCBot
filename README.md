@@ -1,6 +1,6 @@
 # HQT Trading System
 
-[![CI](https://github.com/yourusername/hqt/workflows/CI/badge.svg)](https://github.com/yourusername/hqt/actions)
+[![CI](https://github.com/haruperi/HaruQuantCBot/workflows/CI/badge.svg)](https://github.com/haruperi/HaruQuantCBot/actions)
 
 **Hybrid C++/Python Quantitative Trading & Backtesting System**
 
@@ -96,7 +96,7 @@ cd vcpkg
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/hqt.git
+git clone https://github.com/haruperi/HaruQuantCBot.git
 cd hqt
 
 # Create Python virtual environment
@@ -172,5 +172,5 @@ See Developer Guide (coming soon)
 
 ## Contact
 
-- Project: https://github.com/yourusername/hqt
-- Issues: https://github.com/yourusername/hqt/issues
+- Project: https://github.com/haruperi/HaruQuantCBot
+- Issues: https://github.com/haruperi/HaruQuantCBot/issues
