@@ -32,19 +32,19 @@
 
 ### Task 1.1: Repository Initialization & Build System Setup [SDD: §3, §18.1]
 
-- [ ] **Sub-Task 1.1.1**: Create Git repo with `.gitignore` (C++, Python, IDE, data/, build/, *.db), `.editorconfig`, `LICENSE`. Initialize `main` and `develop` branches with protection rules.
+- [x] **Sub-Task 1.1.1**: Create Git repo with `.gitignore` (C++, Python, IDE, data/, build/, *.db), `.editorconfig`, `LICENSE`. Initialize `main` and `develop` branches with protection rules.
   - **Commit**: `init: create repository with .gitignore, .editorconfig, license, branch structure`
 
-- [ ] **Sub-Task 1.1.2**: Create complete directory skeleton per SDD §3 — `cpp/`, `bridge/`, `src/hqt/`, `strategies/`, `mql5/`, `migrations/`, `tests/`, `docs/`, `scripts/`, `config/`. Add `__init__.py` to all Python packages. Add placeholder `README.md` in each directory.
+- [x] **Sub-Task 1.1.2**: Create complete directory skeleton per SDD §3 — `cpp/`, `bridge/`, `src/hqt/`, `strategies/`, `mql5/`, `migrations/`, `tests/`, `docs/`, `scripts/`, `config/`. Add `__init__.py` to all Python packages. Add placeholder `README.md` in each directory.
   - **Commit**: `scaffold: create full directory structure per SDD §3`
 
-- [ ] **Sub-Task 1.1.3**: Create `pyproject.toml` — Python 3.11+, dependency groups (core, dev, test), tool configs for pytest/ruff/mypy, editable install. Initial deps: pydantic>=2.0, sqlalchemy>=2.0, alembic, tomli, keyring.
+- [x] **Sub-Task 1.1.3**: Create `pyproject.toml` — Python 3.11+, dependency groups (core, dev, test), tool configs for pytest/ruff/mypy, editable install. Initial deps: pydantic>=2.0, sqlalchemy>=2.0, alembic, tomli, keyring.
   - **Commit**: `build(py): create pyproject.toml with deps, tool configs, editable install`
 
-- [ ] **Sub-Task 1.1.4**: Create top-level `CMakeLists.txt` (CMake 3.25+, C++20, vcpkg toolchain). Create `vcpkg.json` with spdlog, tomlplusplus, gtest, benchmark. Create `cpp/CMakeLists.txt`. Verify build on MSVC and GCC.
+- [x] **Sub-Task 1.1.4**: Create top-level `CMakeLists.txt` (CMake 3.25+, C++20, vcpkg toolchain). Create `vcpkg.json` with spdlog, tomlplusplus, gtest, benchmark. Create `cpp/CMakeLists.txt`. Verify build on MSVC and GCC.
   - **Commit**: `build(cpp): create CMake build system with vcpkg manifest, verify cross-platform`
 
-- [ ] **Sub-Task 1.1.5**: Create `config/base.toml`, `development.toml`, `testing.toml` with placeholder sections: `[engine]`, `[data]`, `[broker]`, `[risk]`, `[notifications]`, `[logging]`, `[ui]`, `[database]`.
+- [x] **Sub-Task 1.1.5**: Create `config/base.toml`, `development.toml`, `testing.toml` with placeholder sections: `[engine]`, `[data]`, `[broker]`, `[risk]`, `[notifications]`, `[logging]`, `[ui]`, `[database]`.
   - **Commit**: `config: create TOML config files with all section placeholders`
 
 - **Testing**: Verify cmake build succeeds on Windows/Linux. Verify `pip install -e ".[dev]"` and `import hqt` succeed.
