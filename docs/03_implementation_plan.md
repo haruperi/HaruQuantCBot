@@ -79,25 +79,25 @@
 
 ### Task 1.3: Exception Handling Framework [SDD: §4.3] [REQ: FND-FR-010 through FND-FR-014]
 
-- [ ] **Sub-Task 1.3.1**: Create `src/hqt/foundation/exceptions/base.py` — `HQTBaseError(Exception)` with `error_code`, `module`, `timestamp`, `message`, `to_dict()`.
-  - **Commit**: `feat(foundation): implement HQTBaseError base exception`
+- [x] **Sub-Task 1.3.1**: Create `src/hqt/foundation/exceptions/base.py` — `HQTBaseError(Exception)` with `error_code`, `module`, `timestamp`, `message`, `to_dict()`.
+  - **Commit**: `c5f5536 - feat(foundation): implement HQTBaseError base exception`
 
-- [ ] **Sub-Task 1.3.2**: Create `data.py` — `DataError`, `ValidationError`, `PriceSanityError`, `GapError`, `DuplicateError`. Each with relevant context fields.
-  - **Commit**: `feat(foundation): implement data exception hierarchy`
+- [x] **Sub-Task 1.3.2**: Create `data.py` — `DataError`, `ValidationError`, `PriceSanityError`, `GapError`, `DuplicateError`. Each with relevant context fields.
+  - **Commit**: `57378a4 - feat(foundation): implement data exception hierarchy`
 
-- [ ] **Sub-Task 1.3.3**: Create `trading.py` — `TradingError`, `OrderError`, `MarginError`, `StopOutError`.
-  - **Commit**: `feat(foundation): implement trading exception hierarchy`
+- [x] **Sub-Task 1.3.3**: Create `trading.py` — `TradingError`, `OrderError`, `MarginError`, `StopOutError`.
+  - **Commit**: `ab58a9c - feat(foundation): implement trading exception hierarchy`
 
-- [ ] **Sub-Task 1.3.4**: Create `broker.py` — `BrokerError`, `ConnectionError`, `TimeoutError`, `ReconnectError`.
-  - **Commit**: `feat(foundation): implement broker exception hierarchy`
+- [x] **Sub-Task 1.3.4**: Create `broker.py` — `BrokerError`, `ConnectionError`, `TimeoutError`, `ReconnectError`.
+  - **Commit**: `e1d2200 - feat(foundation): implement broker exception hierarchy`
 
-- [ ] **Sub-Task 1.3.5**: Create `engine.py` — `EngineError`, `BridgeError`. Create `config.py` — `ConfigError`, `SchemaError`, `SecretError`.
-  - **Commit**: `feat(foundation): implement engine and config exception hierarchy`
+- [x] **Sub-Task 1.3.5**: Create `engine.py` — `EngineError`, `BridgeError`. Create `config.py` — `ConfigError`, `SchemaError`, `SecretError`.
+  - **Commit**: `141b617 - feat(foundation): implement engine and config exception hierarchy`
 
-- **Testing**: Test instantiation, inheritance chains, to_dict(), str() output. Target 100% coverage.
-  - **Commit**: `test(foundation): add exception hierarchy tests, 100% coverage`
-- **Documentation**: Docstrings on every class. Create `docs/exceptions.md` reference table.
-  - **Commit**: `docs: add exception reference documentation`
+- [x] **Testing**: Test instantiation, inheritance chains, to_dict(), str() output. Target 100% coverage.
+  - **Commit**: `1265c63 - test(foundation): add exception hierarchy tests, 100% coverage`
+- [x] **Documentation**: Docstrings on every class. Create `docs/exceptions.md` reference table.
+  - **Commit**: `0783dbb - docs: add exception reference documentation`
 
 ---
 
