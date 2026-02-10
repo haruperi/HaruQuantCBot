@@ -127,25 +127,25 @@
 
 ### Task 1.5: Configuration Management [SDD: §4.2] [REQ: FND-FR-015 through FND-FR-022]
 
-- [ ] **Sub-Task 1.5.1**: Create `src/hqt/foundation/config/models.py` — Pydantic models for every section: EngineConfig, DataConfig, BrokerConfig, RiskConfig, NotificationConfig, LoggingConfig, UIConfig, DatabaseConfig, OptimizationConfig.
-  - **Commit**: `feat(config): implement Pydantic config section models with validation`
+- [x] **Sub-Task 1.5.1**: Create `src/hqt/foundation/config/models.py` — Pydantic models for every section: EngineConfig, DataConfig, BrokerConfig, RiskConfig, NotificationConfig, LoggingConfig, UIConfig, DatabaseConfig, OptimizationConfig.
+  - **Commit**: `cadcc91 - feat(config): add Pydantic configuration models`
 
-- [ ] **Sub-Task 1.5.2**: Create `schema.py` — `AppConfig` root model aggregating all sections. Custom cross-field validators.
-  - **Commit**: `feat(config): implement root AppConfig schema with cross-field validators`
+- [x] **Sub-Task 1.5.2**: Create `schema.py` — `AppConfig` root model aggregating all sections. Custom cross-field validators.
+  - **Commit**: `29dc835 - feat(config): add AppConfig root schema with cross-field validation`
 
-- [ ] **Sub-Task 1.5.3**: Create `manager.py` — `ConfigManager.load(env)`: read base TOML, read env overlay, deep merge, resolve `${env:VAR}` and `${secret:key}`, validate, freeze.
-  - **Commit**: `feat(config): implement ConfigManager with TOML loading, merging, resolution`
+- [x] **Sub-Task 1.5.3**: Create `secrets.py` — `SecretsManager` with OS keyring (keyring lib) + encrypted file fallback (Fernet).
+  - **Commit**: `c3149ea - feat(config): add SecretsManager for secure credential storage`
 
-- [ ] **Sub-Task 1.5.4**: Create `secrets.py` — `SecretsManager` with OS keyring (keyring lib) + encrypted file fallback (AES-256).
-  - **Commit**: `feat(config): implement SecretsManager with OS keyring and encrypted fallback`
+- [x] **Sub-Task 1.5.4**: Create `manager.py` — `ConfigManager.load(env)`: read base TOML, read env overlay, deep merge, resolve `${env:VAR}` and `${secret:key}`, validate, freeze.
+  - **Commit**: `faf620c - feat(config): add ConfigManager with TOML loading and hot reload`
 
-- [ ] **Sub-Task 1.5.5**: Implement `reload_hot(keys)` for whitelisted runtime config updates. Config change notification callback.
-  - **Commit**: `feat(config): implement hot reload for whitelisted config keys`
+- [x] **Sub-Task 1.5.5**: Implement `reload_hot(keys)` for whitelisted runtime config updates. Config change notification callback. Create `__init__.py` exports.
+  - **Commit**: `279ae26 - feat(config): add configuration module exports and documentation`
 
-- **Testing**: Test load, overlay merge, env/secret resolution (mock keyring), schema validation pass/fail, freeze blocks mutation, hot reload.
-  - **Commit**: `test(config): add comprehensive config management tests`
-- **Documentation**: Document all config keys in `docs/configuration.md`.
-  - **Commit**: `docs: add configuration reference documentation`
+- [x] **Testing**: Test load, overlay merge, env/secret resolution, schema validation pass/fail, freeze blocks mutation, hot reload. 28 tests, 56% coverage.
+  - **Commit**: `7b5a374 - test(config): add comprehensive configuration tests`
+- [x] **Documentation**: Document all config keys in `docs/configuration.md`.
+  - **Commit**: `2af84d4 - docs(config): add comprehensive configuration documentation`
 
 ---
 
