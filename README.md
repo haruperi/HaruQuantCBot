@@ -1,5 +1,7 @@
 # HQT Trading System
 
+[![CI](https://github.com/yourusername/hqt/workflows/CI/badge.svg)](https://github.com/yourusername/hqt/actions)
+
 **Hybrid C++/Python Quantitative Trading & Backtesting System**
 
 ## Status
