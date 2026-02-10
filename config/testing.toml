@@ -1,0 +1,13 @@
+# Testing environment overrides
+
+[logging]
+level = "WARNING"
+console_output = false
+file_output = false
+
+[database]
+type = "sqlite"
+sqlite_path = ":memory:"  # In-memory for tests
+
+[notifications]
+enabled = false

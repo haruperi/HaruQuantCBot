@@ -1,0 +1,15 @@
+# Development environment overrides
+
+[logging]
+level = "DEBUG"
+console_output = true
+file_output = true
+json_output = false
+
+[database]
+type = "sqlite"
+sqlite_path = "hqt_dev.db"
+echo_sql = true
+
+[engine]
+max_tick_processing_rate = 100000  # Lower for dev debugging

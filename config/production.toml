@@ -1,0 +1,16 @@
+# Production environment overrides
+
+[logging]
+level = "INFO"
+console_output = true
+file_output = true
+json_output = true
+
+[database]
+type = "postgresql"
+# postgresql_url = "${env:DATABASE_URL}"
+pool_size = 10
+
+[notifications]
+enabled = true
+channels = ["telegram", "email"]

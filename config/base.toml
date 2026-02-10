@@ -1,0 +1,62 @@
+# Base configuration for HQT Trading System
+# Environment-specific files (development.toml, testing.toml, production.toml)
+# will override these values
+
+[engine]
+max_tick_processing_rate = 1000000  # ticks per second target
+event_queue_capacity = 8192
+gil_acquire_timeout_ms = 1000
+
+[data]
+storage_format = "parquet"  # or "hdf5"
+catalog_db = "data/catalog.db"
+data_directory = "data"
+compression = "snappy"
+
+[broker]
+name = "mt5"
+zmq_tick_pub_endpoint = "tcp://localhost:5555"
+zmq_order_req_endpoint = "tcp://localhost:5556"
+connection_timeout_ms = 5000
+heartbeat_interval_ms = 5000
+
+[risk]
+max_positions = 10
+max_daily_loss_pct = 5.0
+max_drawdown_pct = 15.0
+max_trades_per_day = 50
+margin_call_level_pct = 100.0
+stop_out_level_pct = 50.0
+
+[notifications]
+enabled = true
+channels = ["telegram"]  # "telegram", "email"
+rate_limit_per_minute = 10
+
+[logging]
+level = "INFO"  # TRACE, DEBUG, INFO, WARNING, ERROR, CRITICAL
+console_output = true
+file_output = true
+json_output = false
+log_directory = "logs"
+max_file_size_mb = 50
+max_file_count = 10
+
+[ui]
+window_width = 1920
+window_height = 1080
+chart_refresh_rate_ms = 33  # ~30 fps
+theme = "dark"
+
+[database]
+type = "sqlite"  # or "postgresql"
+sqlite_path = "hqt.db"
+# postgresql_url = "postgresql://user:pass@localhost/hqt"
+pool_size = 5
+pool_overflow = 10
+echo_sql = false
+
+[optimization]
+default_workers = 0  # 0 = auto-detect (physical_cores - 2)
+objective_function = "sharpe_ratio"
+max_iterations = 10000
