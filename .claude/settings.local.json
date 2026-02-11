@@ -32,7 +32,11 @@
       "Bash(cmd /c configure_and_build.bat:*)",
       "Bash(powershell -Command \"& { cd ''D:\\\\Trading\\\\Applications\\\\HaruQuantCBot''; & ''.\\\\build\\\\cpp\\\\tests\\\\hqt_tests.exe'' }\")",
       "Bash(powershell -Command \"& { cd ''D:\\\\Trading\\\\Applications\\\\HaruQuantCBot\\\\cpp''; & ''C:\\\\vcpkg\\\\downloads\\\\tools\\\\cmake-3.31.10-windows\\\\cmake-3.31.10-windows-x86_64\\\\bin\\\\cmake.exe'' --build ../build --config Release 2>&1 | Select-Object -Last 20 }\")",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(python:*)",
+      "Bash(.buildcpptestsReleasehqt_tests.exe)",
+      "Bash(\"./build/cpp/tests/Release/hqt_tests.exe\")",
+      "Bash(\"./build/cpp/tests/Release/hqt_tests.exe\" --gtest_brief=1)"
     ]
   }
 }

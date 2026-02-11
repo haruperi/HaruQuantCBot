@@ -59,7 +59,7 @@ public:
 
     int64_t calculate(const Tick& /*tick*/, const SymbolInfo& info,
                      int64_t /*timestamp_us*/, std::mt19937_64& /*rng*/) const override {
-        return static_cast<int64_t>(spread_points_ * info.point);
+        return static_cast<int64_t>(spread_points_ * info.Point());
     }
 };
 
@@ -86,7 +86,7 @@ public:
         int64_t actual_spread = tick.ask - tick.bid;
 
         // Apply minimum spread floor
-        int64_t min_spread = static_cast<int64_t>(min_spread_points_ * info.point);
+        int64_t min_spread = static_cast<int64_t>(min_spread_points_ * info.Point());
         return std::max(actual_spread, min_spread);
     }
 };
@@ -155,7 +155,7 @@ public:
         }
 
         int32_t adjusted_spread = static_cast<int32_t>(base_spread_points_ * multiplier);
-        return static_cast<int64_t>(adjusted_spread * info.point);
+        return static_cast<int64_t>(adjusted_spread * info.Point());
     }
 };
 
@@ -192,7 +192,7 @@ public:
             std::abs(dist(rng))
         ));
 
-        return static_cast<int64_t>(spread_points * info.point);
+        return static_cast<int64_t>(spread_points * info.Point());
     }
 };
 
@@ -242,9 +242,9 @@ public:
 
         // Adjust spread based on volatility
         double volatility_adjustment = running_volatility_ * volatility_multiplier_;
-        int32_t adjusted_spread = base_spread_points_ + static_cast<int32_t>(volatility_adjustment / info.point);
+        int32_t adjusted_spread = base_spread_points_ + static_cast<int32_t>(volatility_adjustment / info.Point());
 
-        return static_cast<int64_t>(adjusted_spread * info.point);
+        return static_cast<int64_t>(adjusted_spread * info.Point());
     }
 };
 

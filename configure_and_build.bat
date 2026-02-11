@@ -29,6 +29,7 @@ echo Step 2: Configuring CMake with NMake...
 "%CMAKE%" -B build -S . ^
   -DCMAKE_TOOLCHAIN_FILE="%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake" ^
   -DBUILD_TESTING=ON ^
+  -DBUILD_BENCHMARKS=OFF ^
   -G "NMake Makefiles" ^
   -DCMAKE_BUILD_TYPE=Release
 

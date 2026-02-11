@@ -95,7 +95,6 @@ TEST_F(EngineTest, DataFeedAccess) {
         bar.low = 1099900 + i;
         bar.close = 1100050 + i;
         bar.tick_volume = 1000;
-        bar.spread = 15;
         bar.real_volume = 0;
         bars.push_back(bar);
     }
@@ -154,7 +153,7 @@ TEST_F(EngineTest, BuyOrder) {
     auto positions = engine->positions();
     EXPECT_EQ(positions.size(), 1);
     EXPECT_EQ(positions[0].Symbol(), "EURUSD");
-    EXPECT_EQ(positions[0].Type(), ENUM_POSITION_TYPE::POSITION_TYPE_BUY);
+    EXPECT_TRUE(positions[0].PositionType() == ENUM_POSITION_TYPE::POSITION_TYPE_BUY);
     EXPECT_DOUBLE_EQ(positions[0].Volume(), 0.1);
 }
 
@@ -164,7 +163,7 @@ TEST_F(EngineTest, SellOrder) {
 
     auto positions = engine->positions();
     EXPECT_EQ(positions.size(), 1);
-    EXPECT_EQ(positions[0].Type(), ENUM_POSITION_TYPE::POSITION_TYPE_SELL);
+    EXPECT_TRUE(positions[0].PositionType() == ENUM_POSITION_TYPE::POSITION_TYPE_SELL);
 }
 
 TEST_F(EngineTest, MarginCheck) {
@@ -224,20 +223,15 @@ TEST_F(EngineTest, TickCallbackExecution) {
     int tick_count = 0;
     std::string last_symbol;
 
-    engine->set_on_tick([&](const Tick& tick, const SymbolInfo& symbol) {
+    engine->set_on_tick([&](const Tick& /*tick*/, const SymbolInfo& symbol) {
         tick_count++;
         last_symbol = symbol.Name();
     });
 
     // Schedule tick events
-    Event tick_event;
-    tick_event.type = EventType::TICK;
-    tick_event.timestamp_us = 1000000LL;
-    tick_event.symbol_id = 1;
-    tick_event.data1 = 1100000;  // bid (fixed-point)
-    tick_event.data2 = 1100015;  // ask
+    Event tick_event = Event::tick(1000000LL, 1);
 
-    engine->event_loop().schedule(tick_event);
+    engine->event_loop().push(tick_event);
 
     // Run one step
     size_t processed = engine->run_steps(1);
@@ -263,21 +257,17 @@ TEST_F(EngineTest, BarCallbackExecution) {
     bar_feed->load_bars("EURUSD", Timeframe::M1, std::move(bars));
 
     int bar_count = 0;
-    Timeframe received_tf = Timeframe::TICK;
+    Timeframe received_tf = Timeframe::M1;
 
-    engine->set_on_bar([&](const Bar& b, const SymbolInfo& symbol, Timeframe tf) {
+    engine->set_on_bar([&](const Bar& /*b*/, const SymbolInfo& /*symbol*/, Timeframe tf) {
         bar_count++;
         received_tf = tf;
     });
 
     // Schedule bar close event
-    Event bar_event;
-    bar_event.type = EventType::BAR_CLOSE;
-    bar_event.timestamp_us = 60000000LL;
-    bar_event.symbol_id = 1;
-    bar_event.timeframe = static_cast<uint16_t>(Timeframe::M1);
+    Event bar_event = Event::bar_close(60000000LL, 1, static_cast<uint16_t>(Timeframe::M1));
 
-    engine->event_loop().schedule(bar_event);
+    engine->event_loop().push(bar_event);
 
     // Run one step
     size_t processed = engine->run_steps(1);
@@ -289,7 +279,7 @@ TEST_F(EngineTest, BarCallbackExecution) {
 TEST_F(EngineTest, TradeCallbackExecution) {
     int trade_count = 0;
 
-    engine->set_on_trade([&](const DealInfo& deal) {
+    engine->set_on_trade([&](const DealInfo& /*deal*/) {
         trade_count++;
     });
 
@@ -311,13 +301,8 @@ TEST_F(EngineTest, TradeCallbackExecution) {
 TEST_F(EngineTest, RunSteps) {
     // Schedule 10 tick events
     for (int i = 0; i < 10; ++i) {
-        Event event;
-        event.type = EventType::TICK;
-        event.timestamp_us = i * 1000000LL;
-        event.symbol_id = 1;
-        event.data1 = 1100000 + i;
-        event.data2 = 1100015 + i;
-        engine->event_loop().schedule(event);
+        Event event = Event::tick(i * 1000000LL, 1);
+        engine->event_loop().push(event);
     }
 
     // Run 5 steps
@@ -344,13 +329,8 @@ TEST_F(EngineTest, PauseResume) {
 
     // Schedule 10 events
     for (int i = 0; i < 10; ++i) {
-        Event event;
-        event.type = EventType::TICK;
-        event.timestamp_us = i * 1000000LL;
-        event.symbol_id = 1;
-        event.data1 = 1100000;
-        event.data2 = 1100015;
-        engine->event_loop().schedule(event);
+        Event event = Event::tick(i * 1000000LL, 1);
+        engine->event_loop().push(event);
     }
 
     // Run until paused
@@ -378,13 +358,8 @@ TEST_F(EngineTest, Stop) {
 
     // Schedule 10 events
     for (int i = 0; i < 10; ++i) {
-        Event event;
-        event.type = EventType::TICK;
-        event.timestamp_us = i * 1000000LL;
-        event.symbol_id = 1;
-        event.data1 = 1100000;
-        event.data2 = 1100015;
-        engine->event_loop().schedule(event);
+        Event event = Event::tick(i * 1000000LL, 1);
+        engine->event_loop().push(event);
     }
 
     // Run until stopped
@@ -424,7 +399,7 @@ TEST_F(EngineTest, CompleteBacktestScenario) {
     int trades_executed = 0;
     double last_ma = 0.0;
 
-    engine->set_on_bar([&](const Bar& bar, const SymbolInfo& symbol, Timeframe tf) {
+    engine->set_on_bar([&](const Bar& bar, const SymbolInfo& /*symbol*/, Timeframe /*tf*/) {
         // Calculate simple 5-bar MA
         auto bars_vec = bar_feed->get_bars("EURUSD", Timeframe::M1,
                                            bar.timestamp_us, 5);
@@ -459,12 +434,8 @@ TEST_F(EngineTest, CompleteBacktestScenario) {
 
     // Schedule bar close events
     for (int i = 0; i < 100; ++i) {
-        Event event;
-        event.type = EventType::BAR_CLOSE;
-        event.timestamp_us = i * 60000000LL;
-        event.symbol_id = 1;
-        event.timeframe = static_cast<uint16_t>(Timeframe::M1);
-        engine->event_loop().schedule(event);
+        Event event = Event::bar_close(i * 60000000LL, 1, static_cast<uint16_t>(Timeframe::M1));
+        engine->event_loop().push(event);
     }
 
     // Run simulation
@@ -523,11 +494,4 @@ TEST_F(EngineTest, MultiSymbolTrading) {
     EXPECT_TRUE(symbols.count("GBPUSD") > 0);
 }
 
-// ============================================================================
-// Entry Point
-// ============================================================================
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+// Entry point is provided by GTest::gtest_main

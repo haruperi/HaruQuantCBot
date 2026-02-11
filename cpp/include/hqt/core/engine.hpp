@@ -330,11 +330,13 @@ public:
         running_ = true;
         paused_ = false;
 
-        size_t processed = event_loop_.step(steps, [this](const Event& event) {
+        size_t processed = 0;
+        event_loop_.step(steps, [this, &processed](const Event& event) {
             if (!running_) return false;
             if (paused_) return true;
 
             process_event(event);
+            processed++;
             return true;
         });
 
@@ -533,25 +535,29 @@ private:
 
         switch (event.type) {
             case EventType::TICK: {
-                auto symbol_name_it = symbol_id_to_name_.find(event.symbol_id);
+                uint32_t symbol_id = event.data.tick_data.symbol_id;
+                auto symbol_name_it = symbol_id_to_name_.find(symbol_id);
                 if (symbol_name_it == symbol_id_to_name_.end()) break;
 
                 auto symbol_it = symbols_.find(symbol_name_it->second);
                 if (symbol_it == symbols_.end()) break;
 
-                // Create tick from event data
+                // For tick events, we need to get the tick from data feed
+                // Events just trigger the callback, actual data comes from feed
+                // This is simplified - actual implementation would pull tick from feed
+                const auto& sym = symbol_it->second;
                 Tick tick{
                     event.timestamp_us,
-                    event.symbol_id,
-                    event.data1,  // bid
-                    event.data2,  // ask
-                    0, 0, 0  // volumes and spread (not stored in event)
+                    symbol_id,
+                    static_cast<int64_t>(sym.Bid() * 1e6),
+                    static_cast<int64_t>(sym.Ask() * 1e6),
+                    0, 0, 0
                 };
 
-                // Update symbol prices
+                // Update symbol prices (already done, but kept for consistency)
                 trade_.UpdatePrices(symbol_it->second.Name(),
-                                  static_cast<double>(tick.bid) / 1e6,
-                                  static_cast<double>(tick.ask) / 1e6,
+                                  sym.Bid(),
+                                  sym.Ask(),
                                   tick.timestamp_us);
 
                 // Broadcast tick (if enabled)
@@ -568,7 +574,8 @@ private:
             }
 
             case EventType::BAR_CLOSE: {
-                auto symbol_name_it = symbol_id_to_name_.find(event.symbol_id);
+                uint32_t symbol_id = event.data.bar_data.symbol_id;
+                auto symbol_name_it = symbol_id_to_name_.find(symbol_id);
                 if (symbol_name_it == symbol_id_to_name_.end()) break;
 
                 auto symbol_it = symbols_.find(symbol_name_it->second);
@@ -576,7 +583,7 @@ private:
 
                 // Get bar from data feed
                 try {
-                    Timeframe tf = static_cast<Timeframe>(event.timeframe);
+                    Timeframe tf = static_cast<Timeframe>(event.data.bar_data.timeframe);
                     Bar bar = data_feed_->get_last_bar(symbol_it->second.Name(), tf, event.timestamp_us);
 
                     // Broadcast bar (if enabled)
@@ -602,8 +609,16 @@ private:
                 break;
         }
 
-        // Update global clock
-        global_clock_.update_symbol_time(event.symbol_id, event.timestamp_us);
+        // Update global clock (get symbol_id from appropriate event data)
+        uint32_t symbol_id = 0;
+        if (event.type == EventType::TICK) {
+            symbol_id = event.data.tick_data.symbol_id;
+        } else if (event.type == EventType::BAR_CLOSE) {
+            symbol_id = event.data.bar_data.symbol_id;
+        }
+        if (symbol_id != 0) {
+            global_clock_.update_symbol(symbol_id, event.timestamp_us);
+        }
     }
 
     /**
@@ -644,6 +659,7 @@ private:
      * @param data Entry data
      */
     void replay_wal_entry(WALEntryType type, const std::vector<uint8_t>& data) {
+        (void)data;  // Unused for now, will be used during deserialization
         // WAL replay is simplified for now
         // In production, this would deserialize the data and replay operations
         // For Task 3.8, we implement basic structure

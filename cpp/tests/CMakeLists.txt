@@ -2,6 +2,9 @@
 find_package(GTest REQUIRED)
 include(GoogleTest)
 
+# ZeroMQ
+find_package(cppzmq CONFIG REQUIRED)
+
 # Enable testing
 enable_testing()
 
@@ -23,6 +26,7 @@ target_link_libraries(hqt_tests
     GTest::gtest
     GTest::gtest_main
     hqt_core
+    cppzmq-static
 )
 
 # Include directories

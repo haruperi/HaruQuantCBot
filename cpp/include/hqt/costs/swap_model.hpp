@@ -12,7 +12,7 @@
 #include "hqt/data/tick.hpp"
 #include "hqt/trading/symbol_info.hpp"
 #include "hqt/trading/position_info.hpp"
-#include "hqt/matching/slippage_model.hpp"
+#include "hqt/costs/slippage_model.hpp"
 #include "hqt/util/timestamp.hpp"
 #include <cstdint>
 #include <memory>
@@ -128,14 +128,14 @@ public:
         switch (swap_type_) {
             case SwapType::POINTS: {
                 // Swap in points
-                int64_t swap_in_price = static_cast<int64_t>(swap_rate * info.point);
-                int64_t total_swap = static_cast<int64_t>(volume * info.contract_size) * swap_in_price;
+                int64_t swap_in_price = static_cast<int64_t>(swap_rate * info.Point());
+                int64_t total_swap = static_cast<int64_t>(volume * info.ContractSize()) * swap_in_price;
                 return total_swap / 1'000'000;  // Convert to account currency
             }
 
             case SwapType::PERCENTAGE: {
                 // Swap as percentage of position value
-                int64_t position_value = static_cast<int64_t>(volume * info.contract_size) * current_price;
+                int64_t position_value = static_cast<int64_t>(volume * info.ContractSize()) * current_price;
                 position_value /= 1'000'000;
                 return static_cast<int64_t>(position_value * (swap_rate / 100.0));
             }

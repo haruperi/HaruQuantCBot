@@ -371,11 +371,4 @@ TEST(WriteAheadLog, Persistence) {
     }
 }
 
-// ============================================================================
-// Entry Point
-// ============================================================================
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+// Entry point is provided by GTest::gtest_main

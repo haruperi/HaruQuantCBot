@@ -672,11 +672,4 @@ TEST_F(CTradeTest, MultipleSymbolsSupported) {
     EXPECT_EQ(trade.GetPositions().size(), 2);
 }
 
-// ===================================================================
-// Main
-// ===================================================================
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+// Main is provided by GTest::gtest_main

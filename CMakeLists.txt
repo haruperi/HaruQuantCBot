@@ -1,4 +1,16 @@
 cmake_minimum_required(VERSION 3.25)
+
+# vcpkg toolchain integration (must be set before project())
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+    if(EXISTS "C:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+        set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            CACHE STRING "Vcpkg toolchain file")
+        message(STATUS "Using vcpkg toolchain: ${CMAKE_TOOLCHAIN_FILE}")
+    else()
+        message(WARNING "vcpkg not found at C:/vcpkg. Dependencies may not be found.")
+    endif()
+endif()
+
 project(hqt VERSION 0.3.0 LANGUAGES CXX)
 
 # C++20 required
@@ -30,14 +42,13 @@ message(STATUS "To use vcpkg, run cmake with -DCMAKE_TOOLCHAIN_FILE=<vcpkg_root>
 
 # Subdirectories
 add_subdirectory(cpp)
-add_subdirectory(bridge)
+# add_subdirectory(bridge)  # Disabled for C++ testing only
 
 # Testing
 option(BUILD_TESTING "Build tests" ON)
+# Tests are added in cpp/CMakeLists.txt when BUILD_TESTING is ON
 if(BUILD_TESTING)
     enable_testing()
-    # add_subdirectory(cpp/tests)
-    # add_subdirectory(cpp/benchmarks)
 endif()
 
 # Installation
