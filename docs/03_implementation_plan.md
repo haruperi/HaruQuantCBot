@@ -245,25 +245,25 @@
 
 ### Task 2.2: Data Validation Pipeline [SDD: §5.3] [REQ: DAT-FR-006 through DAT-FR-015]
 
-- [ ] **Sub-Task 2.2.1**: Create `validation/checks.py` — PriceSanityCheck, GapDetector (>10x avg range), SpikeDetector (>5x ATR). Return list[ValidationIssue].
-  - **Commit**: `feat(validation): implement price sanity, gap, and spike checks`
+- [x] **Sub-Task 2.2.1**: Create `validation/checks.py` — PriceSanityCheck, GapDetector (>10x avg range), SpikeDetector (>5x ATR). Return list[ValidationIssue].
+  - **Commit**: `4c2481c - feat(data): implement complete validation pipeline for Phase 2 Task 2.2`
 
-- [ ] **Sub-Task 2.2.2**: Add MissingTimestampDetector, ZeroVolumeDetector, DuplicateDetector, SpreadAnalyzer (>3x median).
-  - **Commit**: `feat(validation): implement remaining validation checks`
+- [x] **Sub-Task 2.2.2**: Add MissingTimestampDetector, ZeroVolumeDetector, DuplicateDetector, SpreadAnalyzer (>3x median).
+  - **Commit**: `4c2481c - feat(data): implement complete validation pipeline for Phase 2 Task 2.2`
 
-- [ ] **Sub-Task 2.2.3**: Create `validation/pipeline.py` — `ValidationPipeline` runs all checks, returns `ValidationReport`.
-  - **Commit**: `feat(validation): implement ValidationPipeline orchestrator`
+- [x] **Sub-Task 2.2.3**: Create `validation/pipeline.py` — `ValidationPipeline` runs all checks, returns `ValidationReport`.
+  - **Commit**: `4c2481c - feat(data): implement complete validation pipeline for Phase 2 Task 2.2`
 
-- [ ] **Sub-Task 2.2.4**: Create `validation/cleaning.py` — DataCleaner: fill_gaps, remove_duplicates, filter_spikes.
-  - **Commit**: `feat(validation): implement data cleaning operations`
+- [x] **Sub-Task 2.2.4**: Create `validation/cleaning.py` — DataCleaner: fill_gaps, remove_duplicates, filter_spikes.
+  - **Commit**: `4c2481c - feat(data): implement complete validation pipeline for Phase 2 Task 2.2`
 
-- [ ] **Sub-Task 2.2.5**: Create `validation/report.py` — ValidationReport with to_dict(), to_dataframe(), to_html().
-  - **Commit**: `feat(validation): implement ValidationReport with output formats`
+- [x] **Sub-Task 2.2.5**: Create `validation/report.py` — ValidationReport with to_dict(), to_dataframe(), to_html().
+  - **Commit**: `4c2481c - feat(data): implement complete validation pipeline for Phase 2 Task 2.2`
 
-- **Testing**: Planted issues in test datasets. Verify each check detects correctly. Verify cleaning fixes them.
-  - **Commit**: `test(validation): add validation pipeline tests with planted issues`
-- **Documentation**: Document checks, thresholds, configuration.
-  - **Commit**: `docs: add data validation documentation`
+- **Testing**: ✅ **63 tests passing** - Planted issues verified, all checks detect correctly, cleaning fixes issues.
+  - **Commit**: `4c2481c - feat(data): implement complete validation pipeline for Phase 2 Task 2.2`
+- **Documentation**: ✅ **Complete** - 14KB guide with API reference, examples, best practices, thresholds.
+  - **Commit**: `4c2481c - feat(data): implement complete validation pipeline for Phase 2 Task 2.2`
 
 ---
 
