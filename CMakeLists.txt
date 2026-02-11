@@ -30,7 +30,7 @@ message(STATUS "To use vcpkg, run cmake with -DCMAKE_TOOLCHAIN_FILE=<vcpkg_root>
 
 # Subdirectories
 add_subdirectory(cpp)
-# add_subdirectory(bridge)
+add_subdirectory(bridge)
 
 # Testing
 option(BUILD_TESTING "Build tests" ON)
