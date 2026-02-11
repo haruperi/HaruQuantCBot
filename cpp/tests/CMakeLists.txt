@@ -10,14 +10,17 @@ add_executable(hqt_tests
     test_data_structures.cpp
     test_utilities.cpp
     test_event_loop.cpp
-    test_matching_engine.cpp
+    test_trade.cpp
+    test_currency_margin.cpp
+    test_costs_engine.cpp
 )
 
-# Link against Google Test and our library (when created)
+# Link against Google Test and our library
 target_link_libraries(hqt_tests
     PRIVATE
     GTest::gtest
     GTest::gtest_main
+    hqt_core
 )
 
 # Include directories

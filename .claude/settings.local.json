@@ -25,7 +25,14 @@
       "Bash(cmd.exe:*)",
       "Bash(\"C:/vcpkg/downloads/tools/cmake-3.31.10-windows/cmake-3.31.10-windows-x86_64/bin/cmake.exe\":*)",
       "Bash(cmd //c \"D:\\\\Trading\\\\Applications\\\\HaruQuantCBot\\\\configure_and_build.bat\")",
-      "Bash(cmd //c:*)"
+      "Bash(cmd //c:*)",
+      "WebFetch(domain:www.mql5.com)",
+      "Bash(where:*)",
+      "Bash(configure_and_build.bat)",
+      "Bash(cmd /c configure_and_build.bat:*)",
+      "Bash(powershell -Command \"& { cd ''D:\\\\Trading\\\\Applications\\\\HaruQuantCBot''; & ''.\\\\build\\\\cpp\\\\tests\\\\hqt_tests.exe'' }\")",
+      "Bash(powershell -Command \"& { cd ''D:\\\\Trading\\\\Applications\\\\HaruQuantCBot\\\\cpp''; & ''C:\\\\vcpkg\\\\downloads\\\\tools\\\\cmake-3.31.10-windows\\\\cmake-3.31.10-windows-x86_64\\\\bin\\\\cmake.exe'' --build ../build --config Release 2>&1 | Select-Object -Last 20 }\")",
+      "Bash(powershell -Command:*)"
     ]
   }
 }

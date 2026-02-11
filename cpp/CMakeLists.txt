@@ -1,15 +1,20 @@
 # HQT C++ Core Engine
 
-# Header-only library for now (data structures and utilities)
-add_library(hqt_core INTERFACE)
+# Core library with implementation files (Task 3.4+)
+add_library(hqt_core
+    src/trading/trade.cpp
+)
 
 target_include_directories(hqt_core
-    INTERFACE
+    PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
 
-# Will become a normal library when we add source files
+# Set C++20 standard
+target_compile_features(hqt_core PUBLIC cxx_std_20)
+
+# Link dependencies (when needed)
 # target_link_libraries(hqt_core
 #     PUBLIC
 #         spdlog::spdlog
