@@ -221,25 +221,25 @@
 
 ### Task 2.1: Data Models [SDD: §5.1] [REQ: DAT-FR-001 through DAT-FR-005]
 
-- [ ] **Sub-Task 2.1.1**: Create `data/models/tick.py` — Tick Pydantic model (frozen): symbol, timestamp, bid, ask, bid_volume, ask_volume, spread. Validators: bid>0, ask>0, ask>=bid.
-  - **Commit**: `feat(data): implement Tick Pydantic model with validators`
+- [x] **Sub-Task 2.1.1**: Create `data/models/tick.py` — Tick Pydantic model (frozen): symbol, timestamp, bid, ask, bid_volume, ask_volume, spread. Validators: bid>0, ask>0, ask>=bid.
+  - **Commit**: `2f83ce9 - feat(data): implement complete data models for Phase 2 Task 2.1`
 
-- [ ] **Sub-Task 2.1.2**: Create `data/models/bar.py` — Bar model, Timeframe enum (M1-MN1 with minute values). Validators: high>=max(open,close), low<=min(open,close).
-  - **Commit**: `feat(data): implement Bar model and Timeframe enum with validators`
+- [x] **Sub-Task 2.1.2**: Create `data/models/bar.py` — Bar model, Timeframe enum (M1-MN1 with minute values). Validators: high>=max(open,close), low<=min(open,close).
+  - **Commit**: `2f83ce9 - feat(data): implement complete data models for Phase 2 Task 2.1`
 
-- [ ] **Sub-Task 2.1.3**: Create `data/models/symbol_spec.py` — SymbolSpecification with all SRS DAT-FR-003 fields. SwapType and TradeMode enums.
-  - **Commit**: `feat(data): implement SymbolSpecification model with all fields`
+- [x] **Sub-Task 2.1.3**: Create `data/models/symbol_spec.py` — SymbolSpecification with all SRS DAT-FR-003 fields. SwapType and TradeMode enums.
+  - **Commit**: `2f83ce9 - feat(data): implement complete data models for Phase 2 Task 2.1`
 
-- [ ] **Sub-Task 2.1.4**: Create `data/models/dtypes.py` — NumPy structured array dtypes for Tick and Bar. Conversion functions: models ↔ arrays.
-  - **Commit**: `feat(data): implement NumPy dtype definitions and conversion functions`
+- [x] **Sub-Task 2.1.4**: Create `data/models/dtypes.py` — NumPy structured array dtypes for Tick and Bar. Conversion functions: models ↔ arrays.
+  - **Commit**: `2f83ce9 - feat(data): implement complete data models for Phase 2 Task 2.1`
 
-- [ ] **Sub-Task 2.1.5**: Create MT5 factory functions: `Tick.from_mt5()`, `Bar.from_mt5()`, `SymbolSpecification.from_mt5()`.
-  - **Commit**: `feat(data): add MT5 conversion factories for all data models`
+- [x] **Sub-Task 2.1.5**: Create MT5 factory functions: `Tick.from_mt5()`, `Bar.from_mt5()`, `SymbolSpecification.from_mt5()`.
+  - **Commit**: `2f83ce9 - feat(data): implement complete data models for Phase 2 Task 2.1`
 
-- **Testing**: Valid/invalid creation, validator triggers, frozen reject mutation, NumPy round-trip, MT5 factories.
-  - **Commit**: `test(data): add data model tests`
-- **Documentation**: Docstrings with field descriptions.
-  - **Commit**: `docs: add data model docstrings`
+- **Testing**: ✅ **83 tests passing** - Valid/invalid creation, validator triggers, frozen reject mutation, NumPy round-trip, MT5 factories.
+  - **Commit**: `2f83ce9 - feat(data): implement complete data models for Phase 2 Task 2.1`
+- **Documentation**: ✅ **Complete** - Comprehensive docstrings with field descriptions and examples.
+  - **Commit**: `2f83ce9 - feat(data): implement complete data models for Phase 2 Task 2.1`
 
 ---
 
