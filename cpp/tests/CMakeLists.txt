@@ -9,6 +9,7 @@ enable_testing()
 add_executable(hqt_tests
     test_data_structures.cpp
     test_utilities.cpp
+    test_event_loop.cpp
 )
 
 # Link against Google Test and our library (when created)

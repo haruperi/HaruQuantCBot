@@ -23,4 +23,10 @@ if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()
 
-message(STATUS "C++ core header-only library configured (Task 3.1 complete)")
+# Add benchmarks subdirectory
+option(BUILD_BENCHMARKS "Build benchmark executables" ON)
+if(BUILD_BENCHMARKS)
+    add_subdirectory(benchmarks)
+endif()
+
+message(STATUS "C++ core header-only library configured (Tasks 3.1 & 3.2 complete)")
