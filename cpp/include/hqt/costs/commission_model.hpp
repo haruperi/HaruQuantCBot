@@ -9,8 +9,8 @@
 #pragma once
 
 #include "hqt/data/tick.hpp"
-#include "hqt/market/symbol_info.hpp"
-#include "hqt/matching/slippage_model.hpp"
+#include "hqt/trading/symbol_info.hpp"
+#include "hqt/costs/slippage_model.hpp"
 #include <cstdint>
 #include <memory>
 
@@ -34,7 +34,7 @@ public:
      * @param info Symbol information
      * @return Commission in account currency (fixed-point)
      */
-    virtual int64_t calculate(OrderSide side, double volume, int64_t fill_price,
+    virtual int64_t calculate(ENUM_POSITION_TYPE side, double volume, int64_t fill_price,
                              const SymbolInfo& info) const = 0;
 };
 
@@ -47,7 +47,7 @@ class ZeroCommission final : public ICommissionModel {
 public:
     ZeroCommission() noexcept = default;
 
-    int64_t calculate(OrderSide /*side*/, double /*volume*/, int64_t /*fill_price*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double /*volume*/, int64_t /*fill_price*/,
                      const SymbolInfo& /*info*/) const override {
         return 0;
     }
@@ -79,7 +79,7 @@ public:
         return FixedPerLot(static_cast<int64_t>(commission_per_lot_double * 1'000'000));
     }
 
-    int64_t calculate(OrderSide /*side*/, double volume, int64_t /*fill_price*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double volume, int64_t /*fill_price*/,
                      const SymbolInfo& /*info*/) const override {
         return static_cast<int64_t>(volume * commission_per_lot_);
     }
@@ -111,7 +111,7 @@ public:
         return FixedPerTrade(static_cast<int64_t>(commission_per_trade_double * 1'000'000));
     }
 
-    int64_t calculate(OrderSide /*side*/, double /*volume*/, int64_t /*fill_price*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double /*volume*/, int64_t /*fill_price*/,
                      const SymbolInfo& /*info*/) const override {
         return commission_per_trade_;
     }
@@ -135,11 +135,11 @@ public:
     explicit SpreadMarkup(int32_t markup_points) noexcept
         : markup_points_(markup_points) {}
 
-    int64_t calculate(OrderSide /*side*/, double volume, int64_t /*fill_price*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double volume, int64_t /*fill_price*/,
                      const SymbolInfo& info) const override {
         // Markup applied to each lot
-        int64_t markup_price = static_cast<int64_t>(markup_points_ * info.point);
-        int64_t commission = static_cast<int64_t>(volume * info.contract_size * markup_price);
+        int64_t markup_price = static_cast<int64_t>(markup_points_ * info.Point());
+        int64_t commission = static_cast<int64_t>(volume * info.ContractSize() * markup_price);
         return commission / 1'000'000;  // Convert to account currency
     }
 };
@@ -162,10 +162,10 @@ public:
     explicit PercentageOfValue(double percentage) noexcept
         : percentage_(percentage) {}
 
-    int64_t calculate(OrderSide /*side*/, double volume, int64_t fill_price,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double volume, int64_t fill_price,
                      const SymbolInfo& info) const override {
         // Trade value = volume * contract_size * price
-        int64_t trade_value = static_cast<int64_t>(volume * info.contract_size) * fill_price;
+        int64_t trade_value = static_cast<int64_t>(volume * info.ContractSize()) * fill_price;
         trade_value /= 1'000'000;  // Fixed-point adjustment
 
         // Apply percentage
@@ -200,7 +200,7 @@ public:
         }
     }
 
-    int64_t calculate(OrderSide /*side*/, double volume, int64_t /*fill_price*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double volume, int64_t /*fill_price*/,
                      const SymbolInfo& /*info*/) const override {
         // Find applicable tier
         int64_t commission_per_lot = tiers_.front().commission_per_lot;
@@ -217,4 +217,3 @@ public:
 };
 
 } // namespace hqt
-

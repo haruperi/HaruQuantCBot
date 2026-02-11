@@ -10,7 +10,8 @@
 #pragma once
 
 #include "hqt/data/tick.hpp"
-#include "hqt/market/symbol_info.hpp"
+#include "hqt/trading/symbol_info.hpp"
+#include "hqt/trading/position_info.hpp"
 #include "hqt/matching/slippage_model.hpp"
 #include "hqt/util/timestamp.hpp"
 #include <cstdint>
@@ -41,7 +42,7 @@ public:
      * @param days_held Number of days position has been held
      * @return Swap charges in account currency (positive = charged, negative = credited)
      */
-    virtual int64_t calculate(OrderSide side, double volume, int64_t open_price,
+    virtual int64_t calculate(ENUM_POSITION_TYPE side, double volume, int64_t open_price,
                              int64_t current_price, const SymbolInfo& info,
                              int days_held) const = 0;
 
@@ -69,7 +70,7 @@ class ZeroSwap final : public ISwapModel {
 public:
     ZeroSwap() noexcept = default;
 
-    int64_t calculate(OrderSide /*side*/, double /*volume*/, int64_t /*open_price*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double /*volume*/, int64_t /*open_price*/,
                      int64_t /*current_price*/, const SymbolInfo& /*info*/,
                      int /*days_held*/) const override {
         return 0;
@@ -113,7 +114,7 @@ public:
         : swap_long_(swap_long), swap_short_(swap_short), swap_type_(swap_type),
           rollover_hour_(rollover_hour), triple_swap_day_(triple_swap_day) {}
 
-    int64_t calculate(OrderSide side, double volume, int64_t open_price,
+    int64_t calculate(ENUM_POSITION_TYPE side, double volume, int64_t open_price,
                      int64_t current_price, const SymbolInfo& info,
                      int days_held) const override {
         (void)open_price;  // Unused in this model
@@ -122,7 +123,7 @@ public:
             return 0;
         }
 
-        double swap_rate = (side == OrderSide::BUY) ? swap_long_ : swap_short_;
+        double swap_rate = (side == ENUM_POSITION_TYPE::POSITION_TYPE_BUY) ? swap_long_ : swap_short_;
 
         switch (swap_type_) {
             case SwapType::POINTS: {
@@ -180,7 +181,7 @@ public:
         : holding_fee_(static_cast<int64_t>(holding_fee_double * 1'000'000)),
           grace_period_days_(grace_period_days) {}
 
-    int64_t calculate(OrderSide /*side*/, double volume, int64_t /*open_price*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double volume, int64_t /*open_price*/,
                      int64_t /*current_price*/, const SymbolInfo& /*info*/,
                      int days_held) const override {
         // Apply holding fee after grace period

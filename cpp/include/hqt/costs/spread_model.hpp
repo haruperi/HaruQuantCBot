@@ -9,7 +9,7 @@
 #pragma once
 
 #include "hqt/data/tick.hpp"
-#include "hqt/market/symbol_info.hpp"
+#include "hqt/trading/symbol_info.hpp"
 #include "hqt/util/timestamp.hpp"
 #include <cstdint>
 #include <memory>

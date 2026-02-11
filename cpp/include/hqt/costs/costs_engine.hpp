@@ -1,8 +1,8 @@
 /**
- * @file matching_engine.hpp
- * @brief Order matching and execution engine
+ * @file costs_engine.hpp
+ * @brief Order execution costs engine
  *
- * Evaluates pending orders against market ticks and executes fills.
+ * Evaluates pending orders against market ticks and calculates execution costs.
  * Applies slippage, commission, and spread models.
  * Handles gap scenarios (fills at gap price if price jumps past SL/TP).
  *
@@ -12,11 +12,13 @@
 #pragma once
 
 #include "hqt/data/tick.hpp"
-#include "hqt/market/symbol_info.hpp"
-#include "hqt/matching/slippage_model.hpp"
-#include "hqt/matching/commission_model.hpp"
-#include "hqt/matching/swap_model.hpp"
-#include "hqt/matching/spread_model.hpp"
+#include "hqt/trading/symbol_info.hpp"
+#include "hqt/trading/position_info.hpp"
+#include "hqt/trading/order_info.hpp"
+#include "hqt/costs/slippage_model.hpp"
+#include "hqt/costs/commission_model.hpp"
+#include "hqt/costs/swap_model.hpp"
+#include "hqt/costs/spread_model.hpp"
 #include <memory>
 #include <vector>
 #include <random>
@@ -44,8 +46,7 @@ struct ExecutionResult {
 struct PendingOrder {
     uint64_t ticket;            ///< Unique order ticket
     uint32_t symbol_id;         ///< Symbol identifier
-    OrderType type;             ///< Order type (LIMIT, STOP, etc.)
-    OrderSide side;             ///< Buy or sell
+    ENUM_ORDER_TYPE type;       ///< Order type (BUY_LIMIT, SELL_STOP, etc.)
     double volume;              ///< Order volume in lots
     int64_t price;              ///< Order trigger price (fixed-point)
     int64_t sl;                 ///< Stop loss (0 if none)
@@ -59,7 +60,7 @@ struct PendingOrder {
 struct Position {
     uint64_t ticket;            ///< Position ticket
     uint32_t symbol_id;         ///< Symbol identifier
-    OrderSide side;             ///< Long (BUY) or short (SELL)
+    ENUM_POSITION_TYPE type;    ///< Long (BUY) or short (SELL)
     double volume;              ///< Position volume in lots
     int64_t open_price;         ///< Entry price (fixed-point)
     int64_t sl;                 ///< Stop loss (0 if none)
@@ -70,14 +71,14 @@ struct Position {
 };
 
 /**
- * @brief Matching engine with execution models
+ * @brief Execution costs engine with cost models
  *
  * Evaluates pending orders and open positions against new market data.
  * Calculates realistic fills using slippage, commission, and spread models.
  *
  * Example:
  * @code
- * MatchingEngine engine(
+ * CostsEngine engine(
  *     std::make_unique<FixedSlippage>(2),
  *     std::make_unique<FixedPerLot>(7.0),
  *     std::make_unique<StandardSwap>(-0.5, 0.3, SwapType::POINTS),
@@ -91,7 +92,7 @@ struct Position {
  * }
  * @endcode
  */
-class MatchingEngine {
+class CostsEngine {
 private:
     std::unique_ptr<ISlippageModel> slippage_model_;
     std::unique_ptr<ICommissionModel> commission_model_;
@@ -109,18 +110,18 @@ private:
 
 public:
     /**
-     * @brief Construct matching engine with execution models
+     * @brief Construct costs engine with execution models
      * @param slippage Slippage model
      * @param commission Commission model
      * @param swap Swap model
      * @param spread Spread model
      * @param seed Random seed for deterministic execution (default: 0)
      */
-    MatchingEngine(std::unique_ptr<ISlippageModel> slippage,
-                   std::unique_ptr<ICommissionModel> commission,
-                   std::unique_ptr<ISwapModel> swap,
-                   std::unique_ptr<ISpreadModel> spread,
-                   uint64_t seed = 0)
+    CostsEngine(std::unique_ptr<ISlippageModel> slippage,
+                std::unique_ptr<ICommissionModel> commission,
+                std::unique_ptr<ISwapModel> swap,
+                std::unique_ptr<ISpreadModel> spread,
+                uint64_t seed = 0)
         : slippage_model_(std::move(slippage)),
           commission_model_(std::move(commission)),
           swap_model_(std::move(swap)),
@@ -155,45 +156,62 @@ public:
         // Check if order triggers
         bool triggers = false;
         int64_t trigger_price = 0;
+        bool is_buy = (order.type == ENUM_ORDER_TYPE::ORDER_TYPE_BUY ||
+                      order.type == ENUM_ORDER_TYPE::ORDER_TYPE_BUY_LIMIT ||
+                      order.type == ENUM_ORDER_TYPE::ORDER_TYPE_BUY_STOP ||
+                      order.type == ENUM_ORDER_TYPE::ORDER_TYPE_BUY_STOP_LIMIT);
 
         switch (order.type) {
-            case OrderType::MARKET:
+            case ENUM_ORDER_TYPE::ORDER_TYPE_BUY:
+            case ENUM_ORDER_TYPE::ORDER_TYPE_SELL:
                 // Market orders always execute immediately
                 triggers = true;
-                trigger_price = (order.side == OrderSide::BUY) ? tick.ask : tick.bid;
+                trigger_price = is_buy ? tick.ask : tick.bid;
                 break;
 
-            case OrderType::LIMIT:
+            case ENUM_ORDER_TYPE::ORDER_TYPE_BUY_LIMIT:
                 // Limit buy triggers when ask <= limit price
-                // Limit sell triggers when bid >= limit price
-                if (order.side == OrderSide::BUY && tick.ask <= order.price) {
+                if (tick.ask <= order.price) {
                     triggers = true;
                     trigger_price = order.price;  // Fill at limit price (or better)
-                } else if (order.side == OrderSide::SELL && tick.bid >= order.price) {
+                }
+                break;
+
+            case ENUM_ORDER_TYPE::ORDER_TYPE_SELL_LIMIT:
+                // Limit sell triggers when bid >= limit price
+                if (tick.bid >= order.price) {
                     triggers = true;
                     trigger_price = order.price;
                 }
                 break;
 
-            case OrderType::STOP:
+            case ENUM_ORDER_TYPE::ORDER_TYPE_BUY_STOP:
                 // Stop buy triggers when ask >= stop price
-                // Stop sell triggers when bid <= stop price
-                if (order.side == OrderSide::BUY && tick.ask >= order.price) {
+                if (tick.ask >= order.price) {
                     triggers = true;
                     trigger_price = tick.ask;  // Fill at market price (gap scenario)
-                } else if (order.side == OrderSide::SELL && tick.bid <= order.price) {
+                }
+                break;
+
+            case ENUM_ORDER_TYPE::ORDER_TYPE_SELL_STOP:
+                // Stop sell triggers when bid <= stop price
+                if (tick.bid <= order.price) {
                     triggers = true;
                     trigger_price = tick.bid;
                 }
                 break;
 
-            case OrderType::STOP_LIMIT:
-                // Stop-limit triggers like stop but becomes limit order
-                // Simplified: treat as stop order for backtesting
-                if (order.side == OrderSide::BUY && tick.ask >= order.price) {
+            case ENUM_ORDER_TYPE::ORDER_TYPE_BUY_STOP_LIMIT:
+                // Stop-limit buy triggers like stop but becomes limit order
+                if (tick.ask >= order.price) {
                     triggers = true;
                     trigger_price = std::min(tick.ask, order.price);
-                } else if (order.side == OrderSide::SELL && tick.bid <= order.price) {
+                }
+                break;
+
+            case ENUM_ORDER_TYPE::ORDER_TYPE_SELL_STOP_LIMIT:
+                // Stop-limit sell triggers like stop but becomes limit order
+                if (tick.bid <= order.price) {
                     triggers = true;
                     trigger_price = std::max(tick.bid, order.price);
                 }
@@ -204,20 +222,24 @@ public:
             return result;  // Order did not trigger
         }
 
+        // Convert to position type for slippage/commission calculation
+        ENUM_POSITION_TYPE pos_type = is_buy ? ENUM_POSITION_TYPE::POSITION_TYPE_BUY
+                                              : ENUM_POSITION_TYPE::POSITION_TYPE_SELL;
+
         // Calculate execution price with slippage and spread
         result.executed = true;
-        result.slippage = slippage_model_->calculate(order.side, order.volume, tick, info, rng_);
+        result.slippage = slippage_model_->calculate(pos_type, order.volume, tick, info, rng_);
         result.spread_cost = spread_model_->calculate(tick, info, tick.timestamp_us, rng_);
 
         // Apply slippage to trigger price
-        if (order.side == OrderSide::BUY) {
+        if (is_buy) {
             result.fill_price = trigger_price + result.slippage;
         } else {
             result.fill_price = trigger_price - result.slippage;
         }
 
         // Calculate commission
-        result.commission = commission_model_->calculate(order.side, order.volume,
+        result.commission = commission_model_->calculate(pos_type, order.volume,
                                                         result.fill_price, info);
 
         return result;
@@ -236,9 +258,11 @@ public:
 
         bool triggers = false;
         int64_t trigger_price = 0;
-        OrderSide close_side = (position.side == OrderSide::BUY) ? OrderSide::SELL : OrderSide::BUY;
+        ENUM_POSITION_TYPE close_type = (position.type == ENUM_POSITION_TYPE::POSITION_TYPE_BUY)
+            ? ENUM_POSITION_TYPE::POSITION_TYPE_SELL
+            : ENUM_POSITION_TYPE::POSITION_TYPE_BUY;
 
-        if (position.side == OrderSide::BUY) {
+        if (position.type == ENUM_POSITION_TYPE::POSITION_TYPE_BUY) {
             // Long position: check SL (below) and TP (above)
             if (position.sl > 0 && tick.bid <= position.sl) {
                 // Stop loss hit
@@ -268,18 +292,18 @@ public:
 
         // Calculate close execution
         result.executed = true;
-        result.slippage = slippage_model_->calculate(close_side, position.volume, tick, info, rng_);
+        result.slippage = slippage_model_->calculate(close_type, position.volume, tick, info, rng_);
         result.spread_cost = spread_model_->calculate(tick, info, tick.timestamp_us, rng_);
 
         // Apply slippage to trigger price
-        if (close_side == OrderSide::BUY) {
+        if (close_type == ENUM_POSITION_TYPE::POSITION_TYPE_BUY) {
             result.fill_price = trigger_price + result.slippage;
         } else {
             result.fill_price = trigger_price - result.slippage;
         }
 
         // Calculate commission on close
-        result.commission = commission_model_->calculate(close_side, position.volume,
+        result.commission = commission_model_->calculate(close_type, position.volume,
                                                         result.fill_price, info);
 
         return result;
@@ -287,17 +311,18 @@ public:
 
     /**
      * @brief Execute market order immediately
-     * @param side Buy or sell
+     * @param type Position type (BUY or SELL)
      * @param volume Order volume in lots
      * @param tick Current market tick
      * @param info Symbol information
      * @return Execution result
      */
-    ExecutionResult execute_market_order(OrderSide side, double volume, const Tick& tick,
+    ExecutionResult execute_market_order(ENUM_POSITION_TYPE type, double volume, const Tick& tick,
                                         const SymbolInfo& info) {
         PendingOrder order{};
-        order.type = OrderType::MARKET;
-        order.side = side;
+        order.type = (type == ENUM_POSITION_TYPE::POSITION_TYPE_BUY)
+            ? ENUM_ORDER_TYPE::ORDER_TYPE_BUY
+            : ENUM_ORDER_TYPE::ORDER_TYPE_SELL;
         order.volume = volume;
         order.timestamp_us = tick.timestamp_us;
 
@@ -329,7 +354,7 @@ public:
         // Apply swap multiplier (3x on Wednesday)
         int multiplier = swap_model_->get_multiplier(timestamp_us);
 
-        int64_t swap = swap_model_->calculate(position.side, position.volume,
+        int64_t swap = swap_model_->calculate(position.type, position.volume,
                                              position.open_price, current_price,
                                              info, days_held);
 

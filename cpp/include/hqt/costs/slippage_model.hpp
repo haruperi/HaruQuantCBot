@@ -9,26 +9,14 @@
 #pragma once
 
 #include "hqt/data/tick.hpp"
-#include "hqt/market/symbol_info.hpp"
+#include "hqt/trading/symbol_info.hpp"
+#include "hqt/trading/position_info.hpp"
 #include <random>
 #include <cstdint>
 #include <memory>
 #include <cmath>
 
 namespace hqt {
-
-// Forward declarations for order types
-enum class OrderType : uint8_t {
-    MARKET = 0,
-    LIMIT = 1,
-    STOP = 2,
-    STOP_LIMIT = 3
-};
-
-enum class OrderSide : uint8_t {
-    BUY = 0,
-    SELL = 1
-};
 
 /**
  * @brief Slippage model interface
@@ -50,7 +38,7 @@ public:
      * @param rng Random number generator
      * @return Slippage in fixed-point (positive = worse fill)
      */
-    virtual int64_t calculate(OrderSide side, double volume, const Tick& tick,
+    virtual int64_t calculate(ENUM_POSITION_TYPE side, double volume, const Tick& tick,
                               const SymbolInfo& info, std::mt19937_64& rng) const = 0;
 };
 
@@ -64,7 +52,7 @@ class ZeroSlippage final : public ISlippageModel {
 public:
     ZeroSlippage() noexcept = default;
 
-    int64_t calculate(OrderSide /*side*/, double /*volume*/, const Tick& /*tick*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double /*volume*/, const Tick& /*tick*/,
                      const SymbolInfo& /*info*/, std::mt19937_64& /*rng*/) const override {
         return 0;
     }
@@ -88,10 +76,10 @@ public:
     explicit FixedSlippage(int32_t slippage_points) noexcept
         : slippage_points_(slippage_points) {}
 
-    int64_t calculate(OrderSide /*side*/, double /*volume*/, const Tick& /*tick*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double /*volume*/, const Tick& /*tick*/,
                      const SymbolInfo& info, std::mt19937_64& /*rng*/) const override {
         // Convert points to fixed-point price
-        return static_cast<int64_t>(slippage_points_ * info.point);
+        return static_cast<int64_t>(slippage_points_ * info.Point());
     }
 };
 
@@ -115,11 +103,11 @@ public:
     RandomSlippage(int32_t min_points, int32_t max_points) noexcept
         : min_points_(min_points), max_points_(max_points) {}
 
-    int64_t calculate(OrderSide /*side*/, double /*volume*/, const Tick& /*tick*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double /*volume*/, const Tick& /*tick*/,
                      const SymbolInfo& info, std::mt19937_64& rng) const override {
         std::uniform_int_distribution<int32_t> dist(min_points_, max_points_);
         int32_t slippage_points = dist(rng);
-        return static_cast<int64_t>(slippage_points * info.point);
+        return static_cast<int64_t>(slippage_points * info.Point());
     }
 };
 
@@ -143,10 +131,10 @@ public:
     VolumeSlippage(int32_t base_points, double volume_multiplier) noexcept
         : base_points_(base_points), volume_multiplier_(volume_multiplier) {}
 
-    int64_t calculate(OrderSide /*side*/, double volume, const Tick& /*tick*/,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double volume, const Tick& /*tick*/,
                      const SymbolInfo& info, std::mt19937_64& /*rng*/) const override {
         double total_points = base_points_ + (volume * volume_multiplier_);
-        return static_cast<int64_t>(std::round(total_points) * info.point);
+        return static_cast<int64_t>(std::round(total_points) * info.Point());
     }
 };
 
@@ -170,7 +158,7 @@ public:
     LatencyProfileSlippage(double latency_ms, double spread_multiplier) noexcept
         : latency_ms_(latency_ms), spread_multiplier_(spread_multiplier) {}
 
-    int64_t calculate(OrderSide /*side*/, double /*volume*/, const Tick& tick,
+    int64_t calculate(ENUM_POSITION_TYPE /*side*/, double /*volume*/, const Tick& tick,
                      const SymbolInfo& info, std::mt19937_64& rng) const override {
         // Base slippage from spread
         int64_t spread = tick.ask - tick.bid;
@@ -178,12 +166,10 @@ public:
 
         // Add random component based on latency (simulate price movement during delay)
         std::normal_distribution<double> dist(0.0, latency_ms_ / 100.0);
-        double latency_component = std::abs(dist(rng)) * info.point;
+        double latency_component = std::abs(dist(rng)) * info.Point();
 
         return static_cast<int64_t>(base_slippage + latency_component);
     }
 };
 
 } // namespace hqt
-
-
