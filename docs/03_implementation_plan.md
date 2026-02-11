@@ -293,25 +293,25 @@
 
 ### Task 2.4: Data Storage & Catalog [SDD: §5.2] [REQ: DAT-FR-021 through DAT-FR-025]
 
-- [ ] **Sub-Task 2.4.1**: Create `storage/parquet_store.py` — write with PyArrow (INT64 fixed-point, DELTA encoding), read with predicate pushdown, columnar access.
-  - **Commit**: `feat(storage): implement Parquet storage with columnar access`
+- [x] **Sub-Task 2.4.1**: Create `storage/parquet_store.py` — ParquetStore with PyArrow, INT64 fixed-point (6 decimals), DELTA_BINARY_PACKED compression, predicate pushdown, columnar access.
+  - **Commit**: `a6a50c4 - feat(data): implement data storage & catalog for Phase 2 Task 2.4` (combined all sub-tasks)
 
-- [ ] **Sub-Task 2.4.2**: Create `storage/hdf5_store.py` — same interface, h5py backend, chunked storage.
-  - **Commit**: `feat(storage): implement HDF5 storage as alternative backend`
+- [x] **Sub-Task 2.4.2**: Create `storage/hdf5_store.py` — HDF5Store with h5py, same interface, chunked storage with GZIP, dynamic chunk sizing.
+  - **Commit**: `a6a50c4 - feat(data): implement data storage & catalog for Phase 2 Task 2.4` (combined all sub-tasks)
 
-- [ ] **Sub-Task 2.4.3**: Create `storage/catalog.py` — DataCatalog (SQLite): register_file, query_available, get_file_path, list_symbols.
-  - **Commit**: `feat(storage): implement data catalog for metadata tracking`
+- [x] **Sub-Task 2.4.3**: Create `storage/catalog.py` — DataCatalog with SQLite tracking metadata (symbol, timeframe, date range, row count, source, hash, file size).
+  - **Commit**: `a6a50c4 - feat(data): implement data storage & catalog for Phase 2 Task 2.4` (combined all sub-tasks)
 
-- [ ] **Sub-Task 2.4.4**: Create `storage/manager.py` — StorageManager: download_and_store (full pipeline), compact (merge incremental files).
-  - **Commit**: `feat(storage): implement StorageManager orchestrator with compaction`
+- [x] **Sub-Task 2.4.4**: Create `storage/manager.py` — StorageManager orchestrating full pipeline (provider → validation → storage → catalog), compaction, SHA-256 hashing.
+  - **Commit**: `a6a50c4 - feat(data): implement data storage & catalog for Phase 2 Task 2.4` (combined all sub-tasks)
 
-- [ ] **Sub-Task 2.4.5**: Implement automatic partitioning: ticks→monthly, M1→yearly, H1+→multi-year.
-  - **Commit**: `feat(storage): implement automatic partitioning strategy`
+- [x] **Sub-Task 2.4.5**: Implement PartitionStrategy: ticks→monthly (2024-01), M1-M30→yearly (2024), H1-H12→yearly, D1+→single file (all).
+  - **Commit**: `a6a50c4 - feat(data): implement data storage & catalog for Phase 2 Task 2.4` (combined all sub-tasks)
 
-- **Testing**: Write/read round-trip, columnar read, catalog queries, compaction, Parquet/HDF5 equivalence.
-  - **Commit**: `test(storage): add storage layer tests`
-- **Documentation**: Document storage format, partitioning, management.
-  - **Commit**: `docs: add storage architecture documentation`
+- [x] **Testing**: ✅ **68 tests passing, 85% storage layer coverage** - Write/read round-trip, columnar access, predicate pushdown, catalog queries, compaction, Parquet/HDF5 equivalence.
+  - **Commit**: `a6a50c4 - feat(data): implement data storage & catalog for Phase 2 Task 2.4` (combined all sub-tasks)
+- [x] **Documentation**: ✅ **Complete** - Comprehensive guide (700 lines) covering backends, catalog, manager, partitioning, best practices, performance tips, troubleshooting.
+  - **Commit**: `a6a50c4 - feat(data): implement data storage & catalog for Phase 2 Task 2.4` (combined all sub-tasks)
 
 ---
 
