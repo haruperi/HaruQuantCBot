@@ -241,7 +241,7 @@ def add_redaction_pattern(filter_instance: RedactionFilter, name: str, pattern: 
     Example:
         ```python
         filter = RedactionFilter()
-        add_redaction_pattern(filter, "custom_id", r"ID-\d{10}")
+        add_redaction_pattern(filter, "custom_id", r"ID-\\d{10}")
         ```
     """
     filter_instance.patterns[name] = pattern
