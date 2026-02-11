@@ -18,7 +18,14 @@
       "Bash(alembic revision:*)",
       "Bash(pip install:*)",
       "Bash(findstr:*)",
-      "Bash(python scripts/download_data.py:*)"
+      "Bash(python scripts/download_data.py:*)",
+      "Bash(cmake:*)",
+      "Bash(cmd.exe /c \"C:\\\\vcpkg\\\\downloads\\\\tools\\\\cmake-3.31.10-windows\\\\cmake-3.31.10-windows-x86_64\\\\bin\\\\cmake.exe\" --version)",
+      "Bash(powershell.exe:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(\"C:/vcpkg/downloads/tools/cmake-3.31.10-windows/cmake-3.31.10-windows-x86_64/bin/cmake.exe\":*)",
+      "Bash(cmd //c \"D:\\\\Trading\\\\Applications\\\\HaruQuantCBot\\\\configure_and_build.bat\")",
+      "Bash(cmd //c:*)"
     ]
   }
 }

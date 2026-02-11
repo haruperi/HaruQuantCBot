@@ -8,6 +8,7 @@
 #include "hqt/util/timestamp.hpp"
 #include "hqt/util/random.hpp"
 #include "hqt/core/event.hpp"
+#include "hqt/data/bar.hpp"
 #include <cmath>
 
 using namespace hqt;
@@ -175,7 +176,7 @@ TEST(TimestampTest, FloorOperations) {
 
 TEST(TimestampTest, ISO8601Conversion) {
     // Create a known timestamp: 2026-02-10 14:30:00.123456 UTC
-    int64_t ts = Timestamp::from_seconds(1'770'672'600) + 123'456;
+    int64_t ts = Timestamp::from_seconds(1'770'733'800) + 123'456;
 
     std::string iso = Timestamp::to_iso8601(ts);
     EXPECT_NE(iso.find("2026-02-10"), std::string::npos);
@@ -185,7 +186,7 @@ TEST(TimestampTest, ISO8601Conversion) {
 
 TEST(TimestampTest, ToDate) {
     // 2026-02-10
-    int64_t ts = Timestamp::from_seconds(1'770'672'600);
+    int64_t ts = Timestamp::from_seconds(1'770'733'800);
     std::string date = Timestamp::to_date(ts);
     EXPECT_EQ(date, "2026-02-10");
 }
@@ -221,10 +222,10 @@ TEST(SeededRNGTest, DifferentSeeds) {
 TEST(SeededRNGTest, Reset) {
     SeededRNG rng(12345);
 
-    int first = rng.next_int(1, 100);
-    rng.next_int(1, 100);  // Advance state
+    int64_t first = rng.next_int(1, 100);
+    (void)rng.next_int(1, 100);  // Advance state
     rng.reset();  // Reset to initial seed
-    int after_reset = rng.next_int(1, 100);
+    int64_t after_reset = rng.next_int(1, 100);
 
     EXPECT_EQ(first, after_reset);
 }
@@ -288,11 +289,11 @@ TEST(EventTest, TickEventCreation) {
 }
 
 TEST(EventTest, BarCloseEventCreation) {
-    Event e = Event::bar_close(1000000, 1, static_cast<uint8_t>(Timeframe::H1));
+    Event e = Event::bar_close(1000000, 1, static_cast<uint16_t>(Timeframe::H1));
     EXPECT_EQ(e.timestamp_us, 1000000);
     EXPECT_EQ(e.type, EventType::BAR_CLOSE);
     EXPECT_EQ(e.data.bar_data.symbol_id, 1);
-    EXPECT_EQ(e.data.bar_data.timeframe, static_cast<uint8_t>(Timeframe::H1));
+    EXPECT_EQ(e.data.bar_data.timeframe, static_cast<uint16_t>(Timeframe::H1));
 }
 
 TEST(EventTest, OrderTriggerEventCreation) {

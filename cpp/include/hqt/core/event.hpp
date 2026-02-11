@@ -40,8 +40,8 @@ union EventData {
 
     struct {
         uint32_t symbol_id;  ///< Symbol ID
-        uint8_t timeframe;   ///< Timeframe (cast to Timeframe enum)
-        uint8_t reserved[3];
+        uint16_t timeframe;  ///< Timeframe (cast to Timeframe enum)
+        uint16_t reserved;
     } bar_data;
 
     struct {
@@ -99,7 +99,7 @@ struct Event {
     /**
      * @brief Construct bar close event
      */
-    [[nodiscard]] static constexpr Event bar_close(int64_t ts, uint32_t symbol_id, uint8_t timeframe) noexcept {
+    [[nodiscard]] static constexpr Event bar_close(int64_t ts, uint32_t symbol_id, uint16_t timeframe) noexcept {
         Event e(ts, EventType::BAR_CLOSE);
         e.data.bar_data.symbol_id = symbol_id;
         e.data.bar_data.timeframe = timeframe;

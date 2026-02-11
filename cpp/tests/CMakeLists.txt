@@ -10,6 +10,7 @@ add_executable(hqt_tests
     test_data_structures.cpp
     test_utilities.cpp
     test_event_loop.cpp
+    test_matching_engine.cpp
 )
 
 # Link against Google Test and our library (when created)

@@ -1,5 +1,13 @@
 # Building and Testing HQT C++ Core
 
+> **📚 UPDATED GUIDE AVAILABLE**
+> For the most up-to-date build instructions, troubleshooting, and lessons learned, see:
+> **[C++ Build and Test Guide](docs/cpp_build_and_test_guide.md)**
+>
+> ✅ **Status:** All 54 tests passing
+> 🗓️ **Last Verified:** 2026-02-11
+> 🏗️ **Build System:** VS 18 + vcpkg + NMake Makefiles
+
 This guide walks you through building and testing the C++ core engine.
 
 ---

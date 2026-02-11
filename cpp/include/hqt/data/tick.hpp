@@ -23,16 +23,17 @@ namespace hqt {
  *          XAUUSD (2 digits): 2350.50 → 235050
  */
 struct alignas(64) Tick {
+    // Group int64_t members together to avoid automatic padding
     int64_t timestamp_us;    ///< Timestamp in microseconds since epoch (UTC)
-    uint32_t symbol_id;      ///< Symbol lookup index (internal)
     int64_t bid;             ///< Bid price (fixed-point: value × 10^digits)
     int64_t ask;             ///< Ask price (fixed-point: value × 10^digits)
     int64_t bid_volume;      ///< Volume available at bid
     int64_t ask_volume;      ///< Volume available at ask
+    uint32_t symbol_id;      ///< Symbol lookup index (internal)
     int32_t spread_points;   ///< Spread in points (ask - bid)
 
     // Padding to fill cache line (64 bytes total)
-    // Current size: 8+4+8+8+8+8+4 = 48 bytes, need 16 bytes padding
+    // Current size: 8*5 + 4 + 4 = 48 bytes, need 16 bytes padding
     char _padding[16];
 
     /**
@@ -40,11 +41,11 @@ struct alignas(64) Tick {
      */
     constexpr Tick() noexcept
         : timestamp_us(0)
-        , symbol_id(0)
         , bid(0)
         , ask(0)
         , bid_volume(0)
         , ask_volume(0)
+        , symbol_id(0)
         , spread_points(0)
         , _padding{}
     {}
@@ -55,11 +56,11 @@ struct alignas(64) Tick {
     constexpr Tick(int64_t ts, uint32_t sym_id, int64_t b, int64_t a,
                    int64_t bv, int64_t av, int32_t spread) noexcept
         : timestamp_us(ts)
-        , symbol_id(sym_id)
         , bid(b)
         , ask(a)
         , bid_volume(bv)
         , ask_volume(av)
+        , symbol_id(sym_id)
         , spread_points(spread)
         , _padding{}
     {}

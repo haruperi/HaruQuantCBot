@@ -18,8 +18,9 @@ namespace hqt {
  *
  * Each enum value represents the timeframe duration in minutes.
  * This allows easy arithmetic comparisons and conversions.
+ * Using uint16_t to accommodate large values (up to 43200 for MN1).
  */
-enum class Timeframe : uint8_t {
+enum class Timeframe : uint16_t {
     M1   = 1,      ///< 1 minute
     M5   = 5,      ///< 5 minutes
     M15  = 15,     ///< 15 minutes
@@ -67,36 +68,37 @@ enum class Timeframe : uint8_t {
  * open, high, low, close prices, volume, and spread information.
  */
 struct alignas(64) Bar {
+    // Group int64_t members together to avoid automatic padding
     int64_t timestamp_us;     ///< Bar open time in microseconds since epoch (UTC)
-    uint32_t symbol_id;       ///< Symbol lookup index
-    Timeframe timeframe;      ///< Bar timeframe (M1, H1, etc.)
     int64_t open;             ///< Open price (fixed-point)
     int64_t high;             ///< High price (fixed-point)
     int64_t low;              ///< Low price (fixed-point)
     int64_t close;            ///< Close price (fixed-point)
     int64_t tick_volume;      ///< Number of ticks in bar
     int64_t real_volume;      ///< Actual traded volume (if available)
+    uint32_t symbol_id;       ///< Symbol lookup index
     int32_t spread_points;    ///< Average spread in points
+    Timeframe timeframe;      ///< Bar timeframe (M1, H1, etc.)
 
     // Padding to align to cache line boundary
-    // Current size: 8+4+1+8+8+8+8+8+8+4 = 65 bytes
+    // Current size: 8*7 + 4 + 4 + 2 = 66 bytes
     // Padding to 128 bytes (2 cache lines) for consistent alignment
-    char _padding[63];
+    char _padding[62];
 
     /**
      * @brief Default constructor initializes all fields to zero
      */
     constexpr Bar() noexcept
         : timestamp_us(0)
-        , symbol_id(0)
-        , timeframe(Timeframe::M1)
         , open(0)
         , high(0)
         , low(0)
         , close(0)
         , tick_volume(0)
         , real_volume(0)
+        , symbol_id(0)
         , spread_points(0)
+        , timeframe(Timeframe::M1)
         , _padding{}
     {}
 
@@ -107,15 +109,15 @@ struct alignas(64) Bar {
                   int64_t o, int64_t h, int64_t l, int64_t c,
                   int64_t tv, int64_t rv, int32_t spread) noexcept
         : timestamp_us(ts)
-        , symbol_id(sym_id)
-        , timeframe(tf)
         , open(o)
         , high(h)
         , low(l)
         , close(c)
         , tick_volume(tv)
         , real_volume(rv)
+        , symbol_id(sym_id)
         , spread_points(spread)
+        , timeframe(tf)
         , _padding{}
     {}
 
