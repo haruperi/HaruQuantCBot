@@ -181,19 +181,19 @@
 - [x] **Sub-Task 1.7.2**: Create `database/models.py` — all ORM models per SDD §17.2: User, UserSetting, Strategy, Backtest, BacktestTrade, Optimization, OptimizationResult, LiveTrade, PaperTrade, AccountSnapshot, EdgeResult, FinanceMetric, Notification. (15 models with SQLAlchemy 2.x Mapped[] annotations)
   - **Commit**: `9b4e703 - feat(database): add ORM models and repository pattern`
 
-- [~] **Sub-Task 1.7.3**: Initialize Alembic — **Deferred until schema stabilizes**. Will be completed before Phase 2.
-  - **Status**: Skipped for now (schema may evolve during Phase 1.8)
+- [x] **Sub-Task 1.7.3**: Initialize Alembic migrations — `alembic init`, configure env.py with Base metadata, create initial migration (872282d8ce0b) detecting all 15 tables.
+  - **Commit**: `43d2e48 - feat(database): complete Task 1.7 with migrations, backup utilities, and documentation`
 
 - [x] **Sub-Task 1.7.4**: Create `database/repositories.py` — BaseRepository[T], UserRepository, StrategyRepository, BacktestRepository, TradeRepository, OptimizationRepository, OptimizationResultRepository, NotificationRepository with CRUD operations.
   - **Commit**: `9b4e703 - feat(database): add ORM models and repository pattern`
 
-- [~] **Sub-Task 1.7.5**: Create `database/backup.py` and `database/export.py` — **Deferred as non-critical**. Will be completed when needed for production.
-  - **Status**: Skipped for now (not required for development/testing)
+- [x] **Sub-Task 1.7.5**: Create `database/backup.py` — DatabaseBackup class with backup/restore, JSON/CSV export/import, batch operations, database statistics.
+  - **Commit**: `43d2e48 - feat(database): complete Task 1.7 with migrations, backup utilities, and documentation`
 
 - [x] **Testing**: In-memory SQLite: CRUD for each repo, FK constraints, cascade deletes. 48 tests, 95% repository coverage, 94% models coverage.
   - **Commit**: `f78f005 - test(database): add comprehensive database layer tests`
-- [~] **Documentation**: ER diagram and migration guide — **Deferred**. Basic docstrings complete, full documentation will be added in Phase 1.8 or when Alembic is integrated.
-  - **Status**: Partial (comprehensive docstrings in code, formal docs deferred)
+- [x] **Documentation**: Create comprehensive `docs/database.md` (~600 lines) covering all models, repositories, migrations, backup operations, connection management, and best practices.
+  - **Commit**: `43d2e48 - feat(database): complete Task 1.7 with migrations, backup utilities, and documentation`
 
 ---
 
