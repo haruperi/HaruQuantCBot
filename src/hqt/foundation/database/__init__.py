@@ -55,6 +55,9 @@ from .repositories import (
     UserRepository,
 )
 
+# Backup and export utilities
+from .backup import DatabaseBackup, create_backup
+
 __all__ = [
     # Connection
     "DatabaseManager",
@@ -83,4 +86,7 @@ __all__ = [
     "OptimizationRepository",
     "OptimizationResultRepository",
     "NotificationRepository",
+    # Backup
+    "DatabaseBackup",
+    "create_backup",
 ]
