@@ -1,0 +1,1776 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-02-11T05:39:48.994Z",
+  "stack": {
+    "primaryLanguage": "javascript",
+    "languages": [
+      "python",
+      "javascript",
+      "c",
+      "cpp"
+    ],
+    "frameworks": [],
+    "buildTools": [],
+    "testFrameworks": [],
+    "packageManager": null,
+    "isMonorepo": false,
+    "hasDocker": false,
+    "hasCI": true
+  },
+  "structure": {
+    "totalFiles": 6673,
+    "topDirectories": [
+      {
+        "name": "alembic",
+        "fileCount": 6
+      },
+      {
+        "name": "alembic.ini",
+        "fileCount": 1
+      },
+      {
+        "name": "bridge",
+        "fileCount": 0
+      },
+      {
+        "name": "CMakeLists.txt",
+        "fileCount": 1
+      },
+      {
+        "name": "config",
+        "fileCount": 4
+      },
+      {
+        "name": "coverage.json",
+        "fileCount": 1
+      },
+      {
+        "name": "cpp",
+        "fileCount": 1
+      },
+      {
+        "name": "docs",
+        "fileCount": 11
+      },
+      {
+        "name": "hqt.db",
+        "fileCount": 1
+      },
+      {
+        "name": "htmlcov",
+        "fileCount": 95
+      },
+      {
+        "name": "LICENSE",
+        "fileCount": 1
+      },
+      {
+        "name": "migrations",
+        "fileCount": 1
+      },
+      {
+        "name": "mql5",
+        "fileCount": 1
+      },
+      {
+        "name": "pyproject.toml",
+        "fileCount": 1
+      },
+      {
+        "name": "README.md",
+        "fileCount": 1
+      },
+      {
+        "name": "scripts",
+        "fileCount": 3
+      },
+      {
+        "name": "src",
+        "fileCount": 149
+      },
+      {
+        "name": "strategies",
+        "fileCount": 1
+      },
+      {
+        "name": "tests",
+        "fileCount": 40
+      },
+      {
+        "name": "vcpkg.json",
+        "fileCount": 1
+      },
+      {
+        "name": "venv",
+        "fileCount": 6353
+      }
+    ],
+    "languageDistribution": [
+      {
+        "extension": ".py",
+        "count": 2445
+      },
+      {
+        "extension": ".pyc",
+        "count": 2413
+      },
+      {
+        "extension": ".pyi",
+        "count": 765
+      },
+      {
+        "extension": ".pyd",
+        "count": 265
+      },
+      {
+        "extension": ".html",
+        "count": 94
+      },
+      {
+        "extension": ".txt",
+        "count": 73
+      },
+      {
+        "extension": ".c",
+        "count": 61
+      },
+      {
+        "extension": ".typed",
+        "count": 49
+      },
+      {
+        "extension": ".h",
+        "count": 40
+      },
+      {
+        "extension": ".exe",
+        "count": 38
+      }
+    ]
+  },
+  "architecture": {
+    "layers": [
+      {
+        "name": "Repositories",
+        "description": "Data access and persistence",
+        "directories": [
+          "scripts",
+          "tests\\unit",
+          "tests\\integration",
+          "alembic\\versions",
+          "src\\hqt\\data",
+          "venv\\Lib\\site-packages\\wheel",
+          "venv\\Lib\\site-packages\\setuptools",
+          "venv\\Lib\\site-packages\\pydantic",
+          "venv\\Lib\\site-packages\\packaging",
+          "venv\\Lib\\site-packages\\hypothesis",
+          "src\\hqt\\foundation\\exceptions",
+          "src\\hqt\\foundation\\database",
+          "src\\hqt\\data\\versioning",
+          "src\\hqt\\data\\validation",
+          "src\\hqt\\data\\storage",
+          "src\\hqt\\data\\providers",
+          "venv\\Lib\\site-packages\\sqlalchemy\\orm",
+          "venv\\Lib\\site-packages\\setuptools\\tests",
+          "venv\\Lib\\site-packages\\pygments\\lexers",
+          "venv\\Lib\\site-packages\\pydantic\\_internal",
+          "venv\\Lib\\site-packages\\pydantic\\v1",
+          "venv\\Lib\\site-packages\\mypyc\\analysis",
+          "venv\\Lib\\site-packages\\mypy\\test",
+          "venv\\Lib\\site-packages\\mypy\\plugins",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils\\tests",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils\\command",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\packaging",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\idna",
+          "venv\\Lib\\site-packages\\pip\\_internal\\metadata",
+          "venv\\Lib\\site-packages\\mypy\\test\\meta",
+          "venv\\Lib\\site-packages\\hypothesis\\internal\\conjecture",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\importlib_metadata\\compat",
+          "venv\\Lib\\site-packages\\pip\\_internal\\metadata\\importlib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\pydoc_data",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\importlib\\metadata",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\distutils\\command"
+        ],
+        "symbolCount": 624,
+        "dependsOn": []
+      },
+      {
+        "name": "Utils",
+        "description": "Shared utilities and helpers",
+        "directories": [
+          "tests\\unit",
+          "venv\\Lib\\site-packages",
+          "venv\\Lib\\site-packages\\_pytest",
+          "venv\\Lib\\site-packages\\_distutils_hack",
+          "venv\\Lib\\site-packages\\win32ctypes",
+          "venv\\Lib\\site-packages\\wheel",
+          "venv\\Lib\\site-packages\\typing_inspection",
+          "venv\\Lib\\site-packages\\sqlalchemy",
+          "venv\\Lib\\site-packages\\sortedcontainers",
+          "venv\\Lib\\site-packages\\setuptools",
+          "venv\\Lib\\site-packages\\ruff",
+          "venv\\Lib\\site-packages\\pytokens",
+          "venv\\Lib\\site-packages\\pytest_cov",
+          "venv\\Lib\\site-packages\\pytest",
+          "venv\\Lib\\site-packages\\pygments",
+          "venv\\Lib\\site-packages\\pydantic_core",
+          "venv\\Lib\\site-packages\\pydantic",
+          "venv\\Lib\\site-packages\\pluggy",
+          "venv\\Lib\\site-packages\\platformdirs",
+          "venv\\Lib\\site-packages\\pip",
+          "venv\\Lib\\site-packages\\pathspec",
+          "venv\\Lib\\site-packages\\packaging",
+          "venv\\Lib\\site-packages\\mypyc",
+          "venv\\Lib\\site-packages\\mypy",
+          "venv\\Lib\\site-packages\\more_itertools",
+          "venv\\Lib\\site-packages\\markupsafe",
+          "venv\\Lib\\site-packages\\mako",
+          "venv\\Lib\\site-packages\\keyring",
+          "venv\\Lib\\site-packages\\iniconfig",
+          "venv\\Lib\\site-packages\\hypothesis",
+          "venv\\Lib\\site-packages\\greenlet",
+          "venv\\Lib\\site-packages\\colorama",
+          "venv\\Lib\\site-packages\\click",
+          "venv\\Lib\\site-packages\\blib2to3",
+          "venv\\Lib\\site-packages\\blackd",
+          "venv\\Lib\\site-packages\\black",
+          "venv\\Lib\\site-packages\\annotated_types",
+          "venv\\Lib\\site-packages\\alembic",
+          "src\\hqt\\foundation\\utils",
+          "venv\\Lib\\site-packages\\_pytest\\_py",
+          "venv\\Lib\\site-packages\\_pytest\\_io",
+          "venv\\Lib\\site-packages\\_pytest\\_code",
+          "venv\\Lib\\site-packages\\_pytest\\mark",
+          "venv\\Lib\\site-packages\\_pytest\\config",
+          "venv\\Lib\\site-packages\\_pytest\\assertion",
+          "venv\\Lib\\site-packages\\win32ctypes\\tests",
+          "venv\\Lib\\site-packages\\win32ctypes\\pywin32",
+          "venv\\Lib\\site-packages\\win32ctypes\\core",
+          "venv\\Lib\\site-packages\\wheel\\_commands",
+          "venv\\Lib\\site-packages\\sqlalchemy\\util",
+          "venv\\Lib\\site-packages\\sqlalchemy\\testing",
+          "venv\\Lib\\site-packages\\sqlalchemy\\sql",
+          "venv\\Lib\\site-packages\\sqlalchemy\\pool",
+          "venv\\Lib\\site-packages\\sqlalchemy\\orm",
+          "venv\\Lib\\site-packages\\sqlalchemy\\future",
+          "venv\\Lib\\site-packages\\sqlalchemy\\ext",
+          "venv\\Lib\\site-packages\\sqlalchemy\\event",
+          "venv\\Lib\\site-packages\\sqlalchemy\\engine",
+          "venv\\Lib\\site-packages\\sqlalchemy\\dialects",
+          "venv\\Lib\\site-packages\\sqlalchemy\\cyextension",
+          "venv\\Lib\\site-packages\\sqlalchemy\\connectors",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils",
+          "venv\\Lib\\site-packages\\setuptools\\tests",
+          "venv\\Lib\\site-packages\\setuptools\\config",
+          "venv\\Lib\\site-packages\\setuptools\\compat",
+          "venv\\Lib\\site-packages\\setuptools\\command",
+          "venv\\Lib\\site-packages\\pygments\\styles",
+          "venv\\Lib\\site-packages\\pygments\\filters",
+          "venv\\Lib\\site-packages\\pygments\\formatters",
+          "venv\\Lib\\site-packages\\pygments\\lexers",
+          "venv\\Lib\\site-packages\\pydantic\\_internal",
+          "venv\\Lib\\site-packages\\pydantic\\v1",
+          "venv\\Lib\\site-packages\\pydantic\\plugin",
+          "venv\\Lib\\site-packages\\pydantic\\experimental",
+          "venv\\Lib\\site-packages\\pydantic\\deprecated",
+          "venv\\Lib\\site-packages\\pip\\_vendor",
+          "venv\\Lib\\site-packages\\pip\\_internal",
+          "venv\\Lib\\site-packages\\pathspec\\_backends",
+          "venv\\Lib\\site-packages\\pathspec\\patterns",
+          "venv\\Lib\\site-packages\\packaging\\licenses",
+          "venv\\Lib\\site-packages\\mypyc\\transform",
+          "venv\\Lib\\site-packages\\mypyc\\test",
+          "venv\\Lib\\site-packages\\mypyc\\primitives",
+          "venv\\Lib\\site-packages\\mypyc\\lower",
+          "venv\\Lib\\site-packages\\mypyc\\irbuild",
+          "venv\\Lib\\site-packages\\mypyc\\ir",
+          "venv\\Lib\\site-packages\\mypyc\\codegen",
+          "venv\\Lib\\site-packages\\mypyc\\analysis",
+          "venv\\Lib\\site-packages\\mypy\\test",
+          "venv\\Lib\\site-packages\\mypy\\server",
+          "venv\\Lib\\site-packages\\mypy\\plugins",
+          "venv\\Lib\\site-packages\\mypy\\dmypy",
+          "venv\\Lib\\site-packages\\mako\\testing",
+          "venv\\Lib\\site-packages\\mako\\ext",
+          "venv\\Lib\\site-packages\\keyring\\util",
+          "venv\\Lib\\site-packages\\keyring\\compat",
+          "venv\\Lib\\site-packages\\keyring\\testing",
+          "venv\\Lib\\site-packages\\keyring\\backends",
+          "venv\\Lib\\site-packages\\jaraco\\functools",
+          "venv\\Lib\\site-packages\\jaraco\\context",
+          "venv\\Lib\\site-packages\\jaraco\\classes",
+          "venv\\Lib\\site-packages\\hypothesis\\utils",
+          "venv\\Lib\\site-packages\\hypothesis\\strategies",
+          "venv\\Lib\\site-packages\\hypothesis\\extra",
+          "venv\\Lib\\site-packages\\hypothesis\\internal",
+          "venv\\Lib\\site-packages\\greenlet\\tests",
+          "venv\\Lib\\site-packages\\greenlet\\platform",
+          "venv\\Lib\\site-packages\\colorama\\tests",
+          "venv\\Lib\\site-packages\\blib2to3\\pgen2",
+          "venv\\Lib\\site-packages\\black\\resources",
+          "venv\\Lib\\site-packages\\alembic\\util",
+          "venv\\Lib\\site-packages\\alembic\\testing",
+          "venv\\Lib\\site-packages\\alembic\\script",
+          "venv\\Lib\\site-packages\\alembic\\runtime",
+          "venv\\Lib\\site-packages\\alembic\\operations",
+          "venv\\Lib\\site-packages\\alembic\\ddl",
+          "venv\\Lib\\site-packages\\alembic\\autogenerate",
+          "venv\\Lib\\site-packages\\win32ctypes\\core\\ctypes",
+          "venv\\Lib\\site-packages\\win32ctypes\\core\\cffi",
+          "venv\\Lib\\site-packages\\sqlalchemy\\testing\\suite",
+          "venv\\Lib\\site-packages\\sqlalchemy\\testing\\fixtures",
+          "venv\\Lib\\site-packages\\sqlalchemy\\testing\\plugin",
+          "venv\\Lib\\site-packages\\sqlalchemy\\ext\\mypy",
+          "venv\\Lib\\site-packages\\sqlalchemy\\ext\\declarative",
+          "venv\\Lib\\site-packages\\sqlalchemy\\ext\\asyncio",
+          "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\sqlite",
+          "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\oracle",
+          "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql",
+          "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql",
+          "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\zipp",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\tomli",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\platformdirs",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\backports",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\autocommand",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils\\tests",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils\\command",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils\\compat",
+          "venv\\Lib\\site-packages\\setuptools\\tests\\integration",
+          "venv\\Lib\\site-packages\\setuptools\\tests\\config",
+          "venv\\Lib\\site-packages\\setuptools\\tests\\compat",
+          "venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\urllib3",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\tomli_w",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\truststore",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\tomli",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\resolvelib",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\rich",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\requests",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pygments",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\platformdirs",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pkg_resources",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\packaging",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\msgpack",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\idna",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\distro",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\dependency_groups",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\distlib",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\certifi",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\cachecontrol",
+          "venv\\Lib\\site-packages\\pip\\_internal\\vcs",
+          "venv\\Lib\\site-packages\\pip\\_internal\\resolution",
+          "venv\\Lib\\site-packages\\pip\\_internal\\utils",
+          "venv\\Lib\\site-packages\\pip\\_internal\\req",
+          "venv\\Lib\\site-packages\\pip\\_internal\\operations",
+          "venv\\Lib\\site-packages\\pip\\_internal\\network",
+          "venv\\Lib\\site-packages\\pip\\_internal\\locations",
+          "venv\\Lib\\site-packages\\pip\\_internal\\index",
+          "venv\\Lib\\site-packages\\pip\\_internal\\distributions",
+          "venv\\Lib\\site-packages\\pip\\_internal\\commands",
+          "venv\\Lib\\site-packages\\pip\\_internal\\cli",
+          "venv\\Lib\\site-packages\\pathspec\\_backends\\simple",
+          "venv\\Lib\\site-packages\\pathspec\\_backends\\hyperscan",
+          "venv\\Lib\\site-packages\\pathspec\\_backends\\re2",
+          "venv\\Lib\\site-packages\\pathspec\\patterns\\gitignore",
+          "venv\\Lib\\site-packages\\mypy\\test\\meta",
+          "venv\\Lib\\site-packages\\keyring\\backends\\macOS",
+          "venv\\Lib\\site-packages\\hypothesis\\strategies\\_internal",
+          "venv\\Lib\\site-packages\\hypothesis\\extra\\pandas",
+          "venv\\Lib\\site-packages\\hypothesis\\extra\\django",
+          "venv\\Lib\\site-packages\\hypothesis\\internal\\conjecture",
+          "venv\\Lib\\site-packages\\alembic\\testing\\suite",
+          "venv\\Lib\\site-packages\\alembic\\testing\\plugin",
+          "venv\\Lib\\site-packages\\alembic\\templates\\pyproject_async",
+          "venv\\Lib\\site-packages\\alembic\\templates\\multidb",
+          "venv\\Lib\\site-packages\\alembic\\templates\\pyproject",
+          "venv\\Lib\\site-packages\\alembic\\templates\\generic",
+          "venv\\Lib\\site-packages\\alembic\\templates\\async",
+          "venv\\Lib\\site-packages\\alembic\\autogenerate\\compare",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\zipp\\compat",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\wheel\\_commands",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\packaging\\licenses",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\text",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\context",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\jaraco\\functools",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils\\tests\\compat",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C",
+          "venv\\Lib\\site-packages\\setuptools\\tests\\config\\downloads",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\util",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\contrib",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\packages",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\resolvers",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks\\_in_process",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\styles",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\lexers",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\formatters",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\filters",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\packaging\\licenses",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\cachecontrol\\caches",
+          "venv\\Lib\\site-packages\\pip\\_internal\\resolution\\legacy",
+          "venv\\Lib\\site-packages\\pip\\_internal\\resolution\\resolvelib",
+          "venv\\Lib\\site-packages\\pip\\_internal\\operations\\install",
+          "venv\\Lib\\site-packages\\hypothesis\\internal\\conjecture\\shrinking",
+          "venv\\Lib\\site-packages\\hypothesis\\internal\\conjecture\\dfa",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\compat",
+          "venv\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C\\tests",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\contrib\\_securetransport",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\packages\\backports",
+          "venv\\Lib\\site-packages\\librt",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stubs\\mypy-extensions",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\zoneinfo",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_typeshed",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\zipfile",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xmlrpc",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xml",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\wsgiref",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\venv",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\urllib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\unittest",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\tkinter",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\sys",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\string",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\sqlite3",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\pyexpat",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\pathlib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\os",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\multiprocessing",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\msilib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\logging",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\lib2to3",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\json",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\importlib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\http",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\html",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\ensurepip",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\encodings",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\email",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\distutils",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\dbm",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\curses",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\ctypes",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\concurrent",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\compression",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\collections",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\asyncio",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stubs\\librt\\librt",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\zipfile\\_path",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xml\\sax",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xml\\etree",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xml\\parsers",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xml\\dom",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\multiprocessing\\dummy",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\lib2to3\\pgen2",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\lib2to3\\fixes",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\importlib\\resources",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\email\\mime",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\distutils\\command",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\ctypes\\macholib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\concurrent\\interpreters",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\concurrent\\futures",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\compression\\_common",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\compression\\zstd",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xml\\parsers\\expat"
+        ],
+        "symbolCount": 20061,
+        "dependsOn": []
+      },
+      {
+        "name": "Config",
+        "description": "Configuration and constants",
+        "directories": [
+          "tests\\unit",
+          "src\\hqt\\foundation\\logging",
+          "src\\hqt\\foundation\\exceptions",
+          "src\\hqt\\foundation\\config"
+        ],
+        "symbolCount": 14,
+        "dependsOn": []
+      },
+      {
+        "name": "Controllers",
+        "description": "Request handling and routing",
+        "directories": [
+          "src\\hqt\\api",
+          "venv\\Lib\\site-packages\\_pytest",
+          "venv\\Lib\\site-packages\\win32ctypes",
+          "venv\\Lib\\site-packages\\pydantic",
+          "venv\\Lib\\site-packages\\platformdirs",
+          "venv\\Lib\\site-packages\\mypy",
+          "src\\hqt\\foundation\\logging",
+          "src\\hqt\\api\\websockets",
+          "src\\hqt\\api\\routes",
+          "venv\\Lib\\site-packages\\win32ctypes\\tests",
+          "venv\\Lib\\site-packages\\win32ctypes\\pywin32",
+          "venv\\Lib\\site-packages\\sqlalchemy\\sql",
+          "venv\\Lib\\site-packages\\sqlalchemy\\orm",
+          "venv\\Lib\\site-packages\\sqlalchemy\\event",
+          "venv\\Lib\\site-packages\\mypy\\test",
+          "venv\\Lib\\site-packages\\mako\\ext",
+          "venv\\Lib\\site-packages\\hypothesis\\extra",
+          "venv\\Lib\\site-packages\\alembic\\autogenerate",
+          "venv\\Lib\\site-packages\\setuptools\\_vendor\\platformdirs",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\truststore",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\requests",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\platformdirs",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\cachecontrol",
+          "venv\\Lib\\site-packages\\keyring\\backends\\macOS",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_typeshed",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\wsgiref",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\sqlite3",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\logging",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xml\\sax"
+        ],
+        "symbolCount": 193,
+        "dependsOn": []
+      },
+      {
+        "name": "Models",
+        "description": "Data structures and domain objects",
+        "directories": [
+          "venv\\Lib\\site-packages\\sqlalchemy",
+          "venv\\Lib\\site-packages\\pygments",
+          "venv\\Lib\\site-packages\\pydantic_core",
+          "venv\\Lib\\site-packages\\pydantic",
+          "venv\\Lib\\site-packages\\black",
+          "src\\hqt\\ui\\models",
+          "src\\hqt\\foundation\\database",
+          "src\\hqt\\foundation\\config",
+          "src\\hqt\\data\\validation",
+          "src\\hqt\\data\\models",
+          "venv\\Lib\\site-packages\\sqlalchemy\\testing",
+          "venv\\Lib\\site-packages\\sqlalchemy\\sql",
+          "venv\\Lib\\site-packages\\pygments\\lexers",
+          "venv\\Lib\\site-packages\\pydantic\\_internal",
+          "venv\\Lib\\site-packages\\pydantic\\v1",
+          "venv\\Lib\\site-packages\\pydantic\\plugin",
+          "venv\\Lib\\site-packages\\pydantic\\experimental",
+          "venv\\Lib\\site-packages\\alembic\\testing",
+          "venv\\Lib\\site-packages\\alembic\\operations",
+          "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mssql",
+          "venv\\Lib\\site-packages\\setuptools\\config\\_validate_pyproject",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\requests",
+          "venv\\Lib\\site-packages\\pip\\_vendor\\pygments",
+          "venv\\Lib\\site-packages\\pip\\_internal\\models",
+          "venv\\Lib\\site-packages\\alembic\\autogenerate\\compare",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\pyexpat",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\msilib",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\html",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\xml\\parsers\\expat"
+        ],
+        "symbolCount": 421,
+        "dependsOn": []
+      },
+      {
+        "name": "Services",
+        "description": "Business logic and orchestration",
+        "directories": [
+          "venv\\Lib\\site-packages\\keyring\\backends",
+          "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\email\\mime"
+        ],
+        "symbolCount": 2,
+        "dependsOn": []
+      }
+    ],
+    "patterns": [
+      {
+        "name": "Factory",
+        "confidence": 0.9,
+        "description": "Creates instances of related objects without specifying concrete classes",
+        "occurrences": 12
+      },
+      {
+        "name": "Singleton",
+        "confidence": 0.7,
+        "description": "Ensures a class has only one instance",
+        "occurrences": 30
+      },
+      {
+        "name": "Repository",
+        "confidence": 0.9,
+        "description": "Abstracts data access logic",
+        "occurrences": 15
+      },
+      {
+        "name": "Controller",
+        "confidence": 0.9,
+        "description": "Handles incoming requests and returns responses",
+        "occurrences": 3
+      },
+      {
+        "name": "Builder",
+        "confidence": 0.85,
+        "description": "Separates object construction from its representation",
+        "occurrences": 15
+      },
+      {
+        "name": "Observer",
+        "confidence": 0.75,
+        "description": "Defines a subscription mechanism to notify multiple objects",
+        "occurrences": 101
+      }
+    ],
+    "entryPoints": []
+  },
+  "symbols": {
+    "classes": [
+      {
+        "name": "A",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\greenlet\\tests\\fail_initialstub_already_started.py",
+        "line": 28,
+        "exported": true
+      },
+      {
+        "name": "ABAPLexer",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\pygments\\lexers\\business.py",
+        "line": 242,
+        "exported": true
+      },
+      {
+        "name": "AbapStyle",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\pygments\\styles\\abap.py",
+        "line": 19,
+        "exported": true
+      },
+      {
+        "name": "ABC",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+        "line": 45,
+        "exported": true
+      },
+      {
+        "name": "ABCMeta",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_py_abc.pyi",
+        "line": 10,
+        "exported": true
+      },
+      {
+        "name": "ABCMeta",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+        "line": 14,
+        "exported": true
+      },
+      {
+        "name": "AbnfLexer",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\pygments\\lexers\\grammar_notation.py",
+        "line": 66,
+        "exported": true
+      },
+      {
+        "name": "Abort",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\click\\exceptions.py",
+        "line": 294,
+        "exported": true
+      },
+      {
+        "name": "AbortThread",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\more_itertools\\more.py",
+        "line": 3991,
+        "exported": true
+      },
+      {
+        "name": "AbortThread",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools\\more.py",
+        "line": 3991,
+        "exported": true
+      },
+      {
+        "name": "AbortThread",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\more_itertools\\more.pyi",
+        "line": 730,
+        "exported": true
+      },
+      {
+        "name": "AbortThread",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools\\more.pyi",
+        "line": 730,
+        "exported": true
+      },
+      {
+        "name": "AbsoluteLinkError",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\__init__.py",
+        "line": 747,
+        "exported": true
+      },
+      {
+        "name": "AbsoluteLinkError",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\tarfile.pyi",
+        "line": 733,
+        "exported": true
+      },
+      {
+        "name": "AbsolutePathError",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\__init__.py",
+        "line": 730,
+        "exported": true
+      },
+      {
+        "name": "AbsolutePathError",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\tarfile.pyi",
+        "line": 724,
+        "exported": true
+      },
+      {
+        "name": "AbstractAsyncContextManager",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\contextlib.pyi",
+        "line": 60,
+        "exported": true
+      },
+      {
+        "name": "AbstractBasicAuthHandler",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\urllib\\request.pyi",
+        "line": 202,
+        "exported": true
+      },
+      {
+        "name": "abstractclassmethod",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+        "line": 32,
+        "exported": true
+      },
+      {
+        "name": "AbstractCollectionWriter",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\orm\\writeonly.py",
+        "line": 488,
+        "exported": true
+      },
+      {
+        "name": "AbstractConcreteBase",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\ext\\declarative\\extensions.py",
+        "line": 129,
+        "exported": true
+      },
+      {
+        "name": "AbstractContextManager",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\contextlib.pyi",
+        "line": 48,
+        "exported": true
+      },
+      {
+        "name": "AbstractDigestAuthHandler",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\urllib\\request.pyi",
+        "line": 222,
+        "exported": true
+      },
+      {
+        "name": "AbstractDistribution",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\pip\\_internal\\distributions\\base.py",
+        "line": 13,
+        "exported": true
+      },
+      {
+        "name": "AbstractEntityRegistry",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\orm\\path_registry.py",
+        "line": 656,
+        "exported": true
+      },
+      {
+        "name": "AbstractEventLoop",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\asyncio\\events.pyi",
+        "line": 128,
+        "exported": true
+      },
+      {
+        "name": "AbstractFormatter",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\formatter.pyi",
+        "line": 30,
+        "exported": true
+      },
+      {
+        "name": "AbstractHTTPHandler",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\urllib\\request.pyi",
+        "line": 253,
+        "exported": true
+      },
+      {
+        "name": "AbstractMultiRange",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py",
+        "line": 911,
+        "exported": true
+      },
+      {
+        "name": "AbstractMultiRangeImpl",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py",
+        "line": 947,
+        "exported": true
+      },
+      {
+        "name": "AbstractOperations",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\alembic\\operations\\base.py",
+        "line": 74,
+        "exported": true
+      },
+      {
+        "name": "AbstractORMCompileState",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\orm\\context.py",
+        "line": 223,
+        "exported": true
+      },
+      {
+        "name": "abstractproperty",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+        "line": 42,
+        "exported": true
+      },
+      {
+        "name": "AbstractProvider",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\providers.py",
+        "line": 21,
+        "exported": true
+      },
+      {
+        "name": "AbstractRaises",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\_pytest\\raises.py",
+        "line": 382,
+        "exported": true
+      },
+      {
+        "name": "AbstractRange",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py",
+        "line": 741,
+        "exported": true
+      },
+      {
+        "name": "AbstractReducer",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\multiprocessing\\reduction.pyi",
+        "line": 73,
+        "exported": true
+      },
+      {
+        "name": "AbstractRelationshipLoader",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\orm\\strategies.py",
+        "line": 581,
+        "exported": true
+      },
+      {
+        "name": "AbstractReporter",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\report.py",
+        "line": 99,
+        "exported": true
+      },
+      {
+        "name": "AbstractResolver",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\resolvers\\abstract.py",
+        "line": 22,
+        "exported": true
+      },
+      {
+        "name": "AbstractServer",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\asyncio\\events.pyi",
+        "line": 106,
+        "exported": true
+      },
+      {
+        "name": "AbstractSet",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\typing.pyi",
+        "line": 692,
+        "exported": true
+      },
+      {
+        "name": "AbstractSingleRange",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py",
+        "line": 871,
+        "exported": true
+      },
+      {
+        "name": "AbstractSingleRangeImpl",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py",
+        "line": 906,
+        "exported": true
+      },
+      {
+        "name": "abstractstaticmethod",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+        "line": 37,
+        "exported": true
+      },
+      {
+        "name": "AbstractWriter",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\formatter.pyi",
+        "line": 80,
+        "exported": true
+      },
+      {
+        "name": "AbstractXmlReporter",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\report.py",
+        "line": 706,
+        "exported": true
+      },
+      {
+        "name": "AccountSnapshot",
+        "kind": "class",
+        "file": "src\\hqt\\foundation\\database\\models.py",
+        "line": 291,
+        "exported": true
+      },
+      {
+        "name": "accumulate",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\itertools.pyi",
+        "line": 58,
+        "exported": true
+      },
+      {
+        "name": "Action",
+        "kind": "class",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\argparse.pyi",
+        "line": 329,
+        "exported": true
+      }
+    ],
+    "interfaces": [],
+    "functions": [
+      {
+        "name": "a",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\greenlet\\tests\\test_generator_nested.py",
+        "line": 92,
+        "exported": true
+      },
+      {
+        "name": "a_run",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\greenlet\\tests\\fail_initialstub_already_started.py",
+        "line": 18,
+        "exported": true
+      },
+      {
+        "name": "a2b_hex",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\binascii.pyi",
+        "line": 36,
+        "exported": true
+      },
+      {
+        "name": "a2b_qp",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\binascii.pyi",
+        "line": 19,
+        "exported": true
+      },
+      {
+        "name": "a2b_uu",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\binascii.pyi",
+        "line": 9,
+        "exported": true
+      },
+      {
+        "name": "a85decode",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\base64.pyi",
+        "line": 49,
+        "exported": true
+      },
+      {
+        "name": "a85encode",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\base64.pyi",
+        "line": 46,
+        "exported": true
+      },
+      {
+        "name": "abort",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\os\\__init__.pyi",
+        "line": 1326,
+        "exported": true
+      },
+      {
+        "name": "abs",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_operator.pyi",
+        "line": 60,
+        "exported": true
+      },
+      {
+        "name": "abs",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\builtins.pyi",
+        "line": 1272,
+        "exported": true
+      },
+      {
+        "name": "abs_paths",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\site.pyi",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "absolutepath",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\_pytest\\pathlib.py",
+        "line": 998,
+        "exported": true
+      },
+      {
+        "name": "abspath",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\posixpath.pyi",
+        "line": 85,
+        "exported": true
+      },
+      {
+        "name": "abspath",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\posixpath.pyi",
+        "line": 87,
+        "exported": true
+      },
+      {
+        "name": "abstractmethod",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+        "line": 30,
+        "exported": true
+      },
+      {
+        "name": "accept",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\hypothesis\\internal\\reflection.py",
+        "line": 358,
+        "exported": true
+      },
+      {
+        "name": "access",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\os\\__init__.pyi",
+        "line": 1194,
+        "exported": true
+      },
+      {
+        "name": "access_pypi",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\setuptools\\tests\\test_virtualenv.py",
+        "line": 29,
+        "exported": true
+      },
+      {
+        "name": "acos",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\math.pyi",
+        "line": 18,
+        "exported": true
+      },
+      {
+        "name": "acos",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\cmath.pyi",
+        "line": 14,
+        "exported": true
+      },
+      {
+        "name": "acosh",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\math.pyi",
+        "line": 19,
+        "exported": true
+      },
+      {
+        "name": "acosh",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\cmath.pyi",
+        "line": 15,
+        "exported": true
+      },
+      {
+        "name": "acquire_lock",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_imp.pyi",
+        "line": 14,
+        "exported": true
+      },
+      {
+        "name": "action",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\dmypy\\client.py",
+        "line": 299,
+        "exported": true
+      },
+      {
+        "name": "active_children",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\multiprocessing\\process.pyi",
+        "line": 38,
+        "exported": true
+      },
+      {
+        "name": "active_children",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\multiprocessing\\dummy\\__init__.pyi",
+        "line": 72,
+        "exported": true
+      },
+      {
+        "name": "active_count",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\threading.pyi",
+        "line": 48,
+        "exported": true
+      },
+      {
+        "name": "activeCount",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\threading.pyi",
+        "line": 50,
+        "exported": true
+      },
+      {
+        "name": "adapt",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_sqlite3.pyi",
+        "line": 218,
+        "exported": true
+      },
+      {
+        "name": "adapt",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_sqlite3.pyi",
+        "line": 220,
+        "exported": true
+      },
+      {
+        "name": "adapt",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\encodings\\punycode.pyi",
+        "line": 13,
+        "exported": true
+      },
+      {
+        "name": "adapt_criterion_to_null",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\sql\\util.py",
+        "line": 815,
+        "exported": true
+      },
+      {
+        "name": "adapt_output",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\test\\testpythoneval.py",
+        "line": 113,
+        "exported": true
+      },
+      {
+        "name": "adapt_type",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\sql\\type_api.py",
+        "line": 2347,
+        "exported": true
+      },
+      {
+        "name": "add",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_operator.pyi",
+        "line": 61,
+        "exported": true
+      },
+      {
+        "name": "add",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\audioop.pyi",
+        "line": 8,
+        "exported": true
+      },
+      {
+        "name": "add_additional_orm_attributes",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\ext\\mypy\\apply.py",
+        "line": 255,
+        "exported": true
+      },
+      {
+        "name": "add_alias",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\email\\charset.pyi",
+        "line": 41,
+        "exported": true
+      },
+      {
+        "name": "add_all_sources_to_changed",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\dmypy_server.py",
+        "line": 1055,
+        "exported": true
+      },
+      {
+        "name": "add_args_to_env",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypyc\\irbuild\\env_class.py",
+        "line": 185,
+        "exported": true
+      },
+      {
+        "name": "add_attribute_to_class",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\plugins\\common.py",
+        "line": 391,
+        "exported": true
+      },
+      {
+        "name": "add_await_to_generator_class",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypyc\\irbuild\\generator.py",
+        "line": 388,
+        "exported": true
+      },
+      {
+        "name": "add_block",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypyc\\transform\\refcount.py",
+        "line": 248,
+        "exported": true
+      },
+      {
+        "name": "add_call_to_callable_class",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypyc\\irbuild\\callable_class.py",
+        "line": 82,
+        "exported": true
+      },
+      {
+        "name": "add_catch_all_gitignore",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\build.py",
+        "line": 1215,
+        "exported": true
+      },
+      {
+        "name": "add_charset",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\email\\charset.pyi",
+        "line": 38,
+        "exported": true
+      },
+      {
+        "name": "add_class",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\sqlalchemy\\orm\\clsregistry.py",
+        "line": 64,
+        "exported": true
+      },
+      {
+        "name": "add_class_tvars",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\checkmember.py",
+        "line": 1410,
+        "exported": true
+      },
+      {
+        "name": "add_close_to_generator_class",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypyc\\irbuild\\generator.py",
+        "line": 334,
+        "exported": true
+      },
+      {
+        "name": "add_codec",
+        "kind": "function",
+        "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\email\\charset.pyi",
+        "line": 42,
+        "exported": true
+      }
+    ],
+    "types": [],
+    "enums": []
+  },
+  "publicAPI": [
+    {
+      "name": "a",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\greenlet\\tests\\test_generator_nested.py",
+      "line": 92,
+      "exported": true
+    },
+    {
+      "name": "A",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\greenlet\\tests\\fail_initialstub_already_started.py",
+      "line": 28,
+      "exported": true
+    },
+    {
+      "name": "a_run",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\greenlet\\tests\\fail_initialstub_already_started.py",
+      "line": 18,
+      "exported": true
+    },
+    {
+      "name": "a2b_hex",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\binascii.pyi",
+      "line": 36,
+      "exported": true
+    },
+    {
+      "name": "a2b_qp",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\binascii.pyi",
+      "line": 19,
+      "exported": true
+    },
+    {
+      "name": "a2b_uu",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\binascii.pyi",
+      "line": 9,
+      "exported": true
+    },
+    {
+      "name": "a85decode",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\base64.pyi",
+      "line": 49,
+      "exported": true
+    },
+    {
+      "name": "a85encode",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\base64.pyi",
+      "line": 46,
+      "exported": true
+    },
+    {
+      "name": "ABAPLexer",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\pygments\\lexers\\business.py",
+      "line": 242,
+      "exported": true
+    },
+    {
+      "name": "AbapStyle",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\pygments\\styles\\abap.py",
+      "line": 19,
+      "exported": true
+    },
+    {
+      "name": "ABC",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+      "line": 45,
+      "exported": true
+    },
+    {
+      "name": "ABCMeta",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_py_abc.pyi",
+      "line": 10,
+      "exported": true
+    },
+    {
+      "name": "ABCMeta",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+      "line": 14,
+      "exported": true
+    },
+    {
+      "name": "AbnfLexer",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\pygments\\lexers\\grammar_notation.py",
+      "line": 66,
+      "exported": true
+    },
+    {
+      "name": "abort",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\os\\__init__.pyi",
+      "line": 1326,
+      "exported": true
+    },
+    {
+      "name": "Abort",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\click\\exceptions.py",
+      "line": 294,
+      "exported": true
+    },
+    {
+      "name": "AbortThread",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\more_itertools\\more.py",
+      "line": 3991,
+      "exported": true
+    },
+    {
+      "name": "AbortThread",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools\\more.py",
+      "line": 3991,
+      "exported": true
+    },
+    {
+      "name": "AbortThread",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\more_itertools\\more.pyi",
+      "line": 730,
+      "exported": true
+    },
+    {
+      "name": "AbortThread",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\setuptools\\_vendor\\more_itertools\\more.pyi",
+      "line": 730,
+      "exported": true
+    },
+    {
+      "name": "abs",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\_operator.pyi",
+      "line": 60,
+      "exported": true
+    },
+    {
+      "name": "abs",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\builtins.pyi",
+      "line": 1272,
+      "exported": true
+    },
+    {
+      "name": "abs_paths",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\site.pyi",
+      "line": 11,
+      "exported": true
+    },
+    {
+      "name": "AbsoluteLinkError",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\__init__.py",
+      "line": 747,
+      "exported": true
+    },
+    {
+      "name": "AbsoluteLinkError",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\tarfile.pyi",
+      "line": 733,
+      "exported": true
+    },
+    {
+      "name": "absolutepath",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\_pytest\\pathlib.py",
+      "line": 998,
+      "exported": true
+    },
+    {
+      "name": "AbsolutePathError",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\__init__.py",
+      "line": 730,
+      "exported": true
+    },
+    {
+      "name": "AbsolutePathError",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\tarfile.pyi",
+      "line": 724,
+      "exported": true
+    },
+    {
+      "name": "abspath",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\posixpath.pyi",
+      "line": 85,
+      "exported": true
+    },
+    {
+      "name": "abspath",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\posixpath.pyi",
+      "line": 87,
+      "exported": true
+    },
+    {
+      "name": "AbstractAsyncContextManager",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\contextlib.pyi",
+      "line": 60,
+      "exported": true
+    },
+    {
+      "name": "AbstractBasicAuthHandler",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\urllib\\request.pyi",
+      "line": 202,
+      "exported": true
+    },
+    {
+      "name": "abstractclassmethod",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+      "line": 32,
+      "exported": true
+    },
+    {
+      "name": "AbstractCollectionWriter",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\sqlalchemy\\orm\\writeonly.py",
+      "line": 488,
+      "exported": true
+    },
+    {
+      "name": "AbstractConcreteBase",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\sqlalchemy\\ext\\declarative\\extensions.py",
+      "line": 129,
+      "exported": true
+    },
+    {
+      "name": "AbstractContextManager",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\contextlib.pyi",
+      "line": 48,
+      "exported": true
+    },
+    {
+      "name": "AbstractDigestAuthHandler",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\urllib\\request.pyi",
+      "line": 222,
+      "exported": true
+    },
+    {
+      "name": "AbstractDistribution",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\pip\\_internal\\distributions\\base.py",
+      "line": 13,
+      "exported": true
+    },
+    {
+      "name": "AbstractEntityRegistry",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\sqlalchemy\\orm\\path_registry.py",
+      "line": 656,
+      "exported": true
+    },
+    {
+      "name": "AbstractEventLoop",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\asyncio\\events.pyi",
+      "line": 128,
+      "exported": true
+    },
+    {
+      "name": "AbstractFormatter",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\formatter.pyi",
+      "line": 30,
+      "exported": true
+    },
+    {
+      "name": "AbstractHTTPHandler",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\urllib\\request.pyi",
+      "line": 253,
+      "exported": true
+    },
+    {
+      "name": "abstractmethod",
+      "kind": "function",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+      "line": 30,
+      "exported": true
+    },
+    {
+      "name": "AbstractMultiRange",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py",
+      "line": 911,
+      "exported": true
+    },
+    {
+      "name": "AbstractMultiRangeImpl",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py",
+      "line": 947,
+      "exported": true
+    },
+    {
+      "name": "AbstractOperations",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\alembic\\operations\\base.py",
+      "line": 74,
+      "exported": true
+    },
+    {
+      "name": "AbstractORMCompileState",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\sqlalchemy\\orm\\context.py",
+      "line": 223,
+      "exported": true
+    },
+    {
+      "name": "abstractproperty",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\abc.pyi",
+      "line": 42,
+      "exported": true
+    },
+    {
+      "name": "AbstractProvider",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\providers.py",
+      "line": 21,
+      "exported": true
+    },
+    {
+      "name": "AbstractRaises",
+      "kind": "class",
+      "file": "venv\\Lib\\site-packages\\_pytest\\raises.py",
+      "line": 382,
+      "exported": true
+    }
+  ],
+  "dependencies": {
+    "mostImported": [
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy",
+        "importedBy": 263
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy\\orm",
+        "importedBy": 111
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy\\sql",
+        "importedBy": 75
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy\\testing",
+        "importedBy": 68
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\lib2to3",
+        "importedBy": 44
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\alembic",
+        "importedBy": 29
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\greenlet\\tests",
+        "importedBy": 24
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\setuptools",
+        "importedBy": 18
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy\\dialects\\postgresql",
+        "importedBy": 18
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\mypy\\typeshed\\stdlib\\asyncio",
+        "importedBy": 13
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy\\ext\\mypy",
+        "importedBy": 11
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\pip\\_vendor\\rich",
+        "importedBy": 11
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy\\dialects\\mysql",
+        "importedBy": 10
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\setuptools\\_distutils\\compilers\\C",
+        "importedBy": 9
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy\\engine",
+        "importedBy": 8
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\setuptools\\tests",
+        "importedBy": 8
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\pydantic\\_internal",
+        "importedBy": 8
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\keyring",
+        "importedBy": 7
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\alembic\\ddl",
+        "importedBy": 7
+      },
+      {
+        "file": "D:\\Trading\\Applications\\HaruQuantCBot\\venv\\Lib\\site-packages\\sqlalchemy\\util",
+        "importedBy": 6
+      }
+    ]
+  },
+  "stats": {
+    "totalSymbols": 21376,
+    "exportedSymbols": 18049,
+    "analysisTimeMs": 39387
+  }
+}

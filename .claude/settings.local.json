@@ -6,7 +6,19 @@
       "Bash(git push:*)",
       "Bash(git checkout:*)",
       "Bash(pytest:*)",
-      "Bash(python -c:*)"
+      "Bash(python -c:*)",
+      "Bash(python scripts/setup_dev.py:*)",
+      "Bash(git tag -a v0.1.0-foundation -m \"$\\(cat <<''EOF''\nRelease v0.1.0-foundation: HQT Trading System Foundation Layer\n\nThis release marks the completion of Phase 1: Foundation Layer\ninfrastructure for the HQT Trading System.\n\n## Completed Components\n\n### 1. Exception Handling System\n- Hierarchical exception classes \\(HQTBaseError → domain exceptions\\)\n- Error codes and module tracking\n- Support for additional context and related exceptions\n- 100% test coverage\n\n### 2. Logging System  \n- Structured logging with JSON/text formatters\n- Log redaction for sensitive data \\(API keys, passwords\\)\n- Performance tracking and context filters\n- Multiple handlers \\(console, file, rotating\\)\n- 71-96% test coverage\n\n### 3. Configuration Management\n- TOML-based configuration \\(base + environment overlays\\)\n- Pydantic v2 validation with type safety\n- Secrets management via OS keyring integration\n- Environment variable substitution\n- 49-83% test coverage\n\n### 4. Utility Functions\n- Date/time utilities: Market hours, timezone handling, bar alignment\n- Validation: Symbol, volume, price validation with Decimal precision\n- Calculations: Pip value, position sizing, Kelly criterion, Sharpe ratio\n- Helpers: Deep merge, file hashing, UUID generation\n- 68-91% test coverage\n\n### 5. Database Layer \\(SQLAlchemy 2.x\\)\n- DatabaseManager with connection pooling \\(SQLite + PostgreSQL\\)\n- 15 ORM models with Mapped[] type annotations\n- Repository pattern with generic BaseRepository[T]\n- 7 specialized repositories for CRUD operations\n- Cascade deletes for referential integrity\n- 90-99% test coverage\n\n### 6. Development Tools\n- Automated setup script \\(scripts/setup_dev.py\\)\n- Comprehensive unit tests \\(172 tests\\)\n- Integration test suite \\(1 comprehensive test\\)\n- HTML coverage reports\n\n## Test Results\n- **173 tests passing**\n- **87% overall coverage** \\(exceeds 85% target\\)\n- Database layer: 90-99% coverage\n- Exception handling: 71-100% coverage\n- Utilities: 68-91% coverage\n\n## Phase 1 Tasks Completed\n- ✅ Task 1.1: Exception Handling\n- ✅ Task 1.2: Logging System  \n- ✅ Task 1.3: Configuration Management\n- ✅ Task 1.4: Testing Infrastructure\n- ✅ Task 1.5: Configuration Files\n- ✅ Task 1.6: Utility Functions\n- ✅ Task 1.7: Database Layer \\(core\\)\n- ✅ Task 1.8: Integration & Validation\n\n## Deferred to Phase 2\n- Alembic migrations \\(schema will stabilize first\\)\n- Database backup/export utilities\n- Full database documentation\n\n## Technical Highlights\n- Python 3.11+ with modern type hints\n- SQLAlchemy 2.x with Mapped[] annotations\n- Pydantic v2 for configuration validation\n- Black + isort for code formatting\n- pytest + coverage for testing\n\n## Next Phase\nPhase 2 will focus on Data Infrastructure \\(data models, providers,\nstorage, catalog, versioning\\).\n\nContributors:\n- Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git tag:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(ls:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git reset:*)",
+      "Bash(alembic init:*)",
+      "Bash(alembic revision:*)",
+      "Bash(pip install:*)",
+      "Bash(findstr:*)",
+      "Bash(python scripts/download_data.py:*)"
     ]
   }
 }
