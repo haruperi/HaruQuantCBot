@@ -158,14 +158,16 @@ class ValidationPipeline:
         self,
         df: pd.DataFrame,
         symbol: str,
+        required_columns: list[str] | None = None,
         **kwargs: Any,
     ) -> "ValidationReport":
         """
         Run all validation checks on the data.
 
         Args:
-            df: DataFrame with OHLCV data
+            df: DataFrame with OHLCV or tick data
             symbol: Trading symbol being validated
+            required_columns: List of required columns (None = use OHLC defaults)
             **kwargs: Additional parameters passed to validators
 
         Returns:
@@ -178,7 +180,10 @@ class ValidationPipeline:
         if df.empty:
             raise ValueError("Cannot validate empty DataFrame")
 
-        required_columns = ["timestamp", "open", "high", "low", "close"]
+        # Default required columns if none provided
+        if required_columns is None:
+            required_columns = ["timestamp", "open", "high", "low", "close"]
+
         missing_columns = [col for col in required_columns if col not in df.columns]
         if missing_columns:
             raise ValueError(f"DataFrame missing required columns: {missing_columns}")
@@ -188,6 +193,15 @@ class ValidationPipeline:
 
         for validator in self._validators:
             try:
+                # Basic check: skip OHLC-specific validators if columns are missing
+                # (Relevant for validate_ticks calling a pipeline with bar validators)
+                ohlc_cols = ["open", "high", "low", "close"]
+                is_ohlc_check = any(c in validator.name.lower() for c in ["price", "gap", "spike", "spread"])
+                has_ohlc = all(c in df.columns for c in ohlc_cols)
+
+                if is_ohlc_check and not has_ohlc:
+                    continue
+
                 issues = validator.validate(df, symbol, **kwargs)
                 all_issues.extend(issues)
             except Exception as e:
@@ -204,6 +218,34 @@ class ValidationPipeline:
             total_bars=len(df),
             checks_run=[v.name for v in self._validators],
         )
+
+    def validate_bars(
+        self,
+        df: pd.DataFrame,
+        symbol: str,
+        **kwargs: Any,
+    ) -> "ValidationReport":
+        """
+        Run validation pipeline for bar data.
+
+        [REQ: DAT-FR-014] Bar validation.
+        """
+        required_columns = ["timestamp", "open", "high", "low", "close"]
+        return self.validate(df, symbol, required_columns=required_columns, **kwargs)
+
+    def validate_ticks(
+        self,
+        df: pd.DataFrame,
+        symbol: str,
+        **kwargs: Any,
+    ) -> "ValidationReport":
+        """
+        Run validation pipeline for tick data.
+
+        [REQ: DAT-FR-015] Tick validation.
+        """
+        required_columns = ["timestamp", "bid", "ask"]
+        return self.validate(df, symbol, required_columns=required_columns, **kwargs)
 
     def add_validator(self, validator: Validator) -> None:
         """

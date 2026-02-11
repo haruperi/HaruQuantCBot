@@ -254,6 +254,7 @@ def main():
                 args.quiet,
             )
 
+
             result = manager.download_and_store(
                 provider=provider,
                 symbol=args.symbol,
@@ -261,36 +262,32 @@ def main():
                 start=start,
                 end=end,
                 validate=not args.no_validate,
-                validate_critical_only=(args.validation_level == "permissive"),
+                validate_critical_only=(args.validation_level != "permissive"),
             )
 
             # Print results
-            if result["success"]:
+            if result["total_rows"] > 0:
                 print_success(
-                    f"Downloaded and stored {result['rows_stored']} rows", args.quiet
+                    f"Downloaded and stored {result['total_rows']} rows", args.quiet
                 )
-                print_info(f"File: {result['file_path']}", args.verbose, args.quiet)
-                print_info(f"Partition: {result['partition']}", args.verbose, args.quiet)
+             
+                print_info(f"Partitions: {', '.join(result['partitions'])}", args.verbose, args.quiet)
 
-                if result.get("validation_issues"):
+                if result.get("validation_report"):
+                    report = result["validation_report"]
                     print_info(
-                        f"Validation found {len(result['validation_issues'])} issues",
+                        f"Validation: {report.total_issues} issues found",
                         args.verbose,
                         args.quiet,
                     )
-                    if args.verbose:
-                        for issue in result["validation_issues"][:10]:
-                            print_info(f"  - {issue}", args.verbose, args.quiet)
-                        if len(result["validation_issues"]) > 10:
-                            print_info(
-                                f"  ... and {len(result['validation_issues']) - 10} more",
-                                args.verbose,
-                                args.quiet,
-                            )
+                    if args.verbose and report.total_issues > 0:
+                        print_info(f"  Critical: {report.critical_count}", args.verbose, args.quiet)
+                        print_info(f"  Errors: {report.error_count}", args.verbose, args.quiet)
+                        print_info(f"  Warnings: {report.warning_count}", args.verbose, args.quiet)
 
                 return 0
             else:
-                print_error(f"Download failed: {result.get('error', 'Unknown error')}")
+                print_error("No data downloaded")
                 return 1
 
         finally:

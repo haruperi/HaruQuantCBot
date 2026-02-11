@@ -1,0 +1,31 @@
+# HaruQuantCBot Dependencies
+# Generated based on pyproject.toml and codebase imports
+
+# --- Core Framework ---
+pydantic>=2.0
+sqlalchemy>=2.0
+alembic>=1.12
+
+# --- Data Management & Analytics ---
+pandas>=2.0
+numpy>=1.24
+pyarrow>=14.0
+h5py>=3.10
+pytz
+
+# --- Security & Configuration ---
+keyring>=24.0
+cryptography>=41.0
+
+# --- Broker & Connectivity ---
+MetaTrader5>=5.0.45
+requests>=2.31
+
+# --- Development & Testing (Optional) ---
+pytest>=7.4
+pytest-cov>=4.1
+pytest-asyncio>=0.21
+hypothesis>=6.88
+ruff>=0.1
+mypy>=1.6
+black>=23.0

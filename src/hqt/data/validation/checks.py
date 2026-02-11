@@ -443,6 +443,14 @@ class MissingTimestampDetector(Validator):
         df_copy["time_diff"] = df_copy["timestamp"].diff()
 
         # Threshold for detecting missing timestamps
+        if self.expected_interval_seconds is None:
+            # If not provided, try to auto-detect from first few bars
+            if len(df) < 2:
+                return issues
+            # Calculate mode of time differences
+            diffs = df["timestamp"].diff().dropna()
+            self.expected_interval_seconds = int(diffs.mode()[0])
+            
         threshold = self.expected_interval_seconds * self.tolerance
 
         # Find gaps exceeding threshold
@@ -514,13 +522,24 @@ class ZeroVolumeDetector(Validator):
             return issues
 
         # Check for zero, negative, or null volume
+        # Use 'tick_volume' or 'real_volume' if 'volume' is missing
+        vol_col = "volume"
+        if vol_col not in df.columns:
+            if "tick_volume" in df.columns:
+                vol_col = "tick_volume"
+            elif "real_volume" in df.columns:
+                vol_col = "real_volume"
+            else:
+                # No volume column to check
+                return issues
+
         zero_volume_mask = (
-            (df["volume"] <= 0) | (df["volume"].isna())
+            (df[vol_col] <= 0) | (df[vol_col].isna())
         )
 
         for idx in df[zero_volume_mask].index:
             row = df.loc[idx]
-            volume_value = row["volume"] if not pd.isna(row["volume"]) else None
+            volume_value = row[vol_col] if not pd.isna(row[vol_col]) else None
 
             issues.append(
                 ValidationIssue(

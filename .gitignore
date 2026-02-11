@@ -65,6 +65,9 @@ vcpkg_installed/
 *.db-wal
 *.sqlite
 *.sqlite3
+*.parquet
+*.hdf5
+*.h5
 
 # Logs
 *.log

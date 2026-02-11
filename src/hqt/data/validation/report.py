@@ -131,6 +131,20 @@ class ValidationReport:
         """Number of info issues."""
         return self.severity_counts["INFO"]
 
+    @property
+    def critical_issues(self) -> list[ValidationIssue]:
+        """List of critical issues."""
+        return self.get_issues_by_severity(IssueSeverity.CRITICAL)
+
+    def has_critical_issues(self) -> bool:
+        """
+        Check if there are any critical issues.
+
+        Returns:
+            True if critical issues exist, False otherwise
+        """
+        return self.critical_count > 0
+
     def get_issues_by_severity(self, severity: IssueSeverity) -> list[ValidationIssue]:
         """
         Get all issues of a specific severity level.
