@@ -45,6 +45,7 @@ test = [
     "pytest-cov>=4.1",
     "pytest-asyncio>=0.21",
     "hypothesis>=6.88",
+    "psutil>=5.9",  # For performance memory benchmarks
 ]
 
 [tool.setuptools.packages.find]
@@ -62,6 +63,11 @@ addopts = [
     "--cov=hqt",
     "--cov-report=term-missing:skip-covered",
     "--cov-report=html",
+]
+markers = [
+    "benchmark: Performance benchmark tests",
+    "e2e: End-to-end integration tests",
+    "slow: Slow tests that take significant time",
 ]
 
 [tool.ruff]
